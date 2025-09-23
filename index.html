@@ -16,7 +16,7 @@
             color: #fff;
         }
 
-        /* Glowing header */
+        /* Header with animation */
         header {
             text-align: center;
             padding: 80px 20px;
@@ -49,7 +49,7 @@
             animation: imgIntro 2s forwards 2s;
         }
 
-        /* Gallery section */
+        /* Gallery */
         .gallery {
             text-align: center;
             padding: 50px 20px;
@@ -61,7 +61,7 @@
             font-size: 3em;
             color: #ff1493;
             margin-bottom: 20px;
-            text-shadow: 0 0 10px #fff, 0 0 20px #ff1493;
+            text-shadow: 0 0 10px #fff, 0 0 20px #ff69b4;
             animation: glowIntro 2s forwards;
         }
 
@@ -108,12 +108,74 @@
             animation: fadeIn 2s forwards;
         }
 
-        footer {
+        /* Comments Section */
+        .comments {
             text-align: center;
-            padding: 30px;
-            font-size: 1.3em;
+            margin: 50px 20px;
+        }
+
+        .comments h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5em;
+            color: #ff1493;
+            text-shadow: 0 0 10px #fff, 0 0 20px #ff69b4;
+            margin-bottom: 20px;
+        }
+
+        #commentInput {
+            padding: 10px;
+            width: 250px;
+            border-radius: 10px;
+            border: none;
+            font-size: 1em;
+        }
+
+        #commentBtn {
+            padding: 10px 20px;
+            margin-left: 10px;
+            background-color: #ff69b4;
             color: #fff;
-            text-shadow: 0 0 10px #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: transform 0.3s;
+        }
+
+        #commentBtn:hover {
+            transform: scale(1.1);
+        }
+
+        #commentList {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #fff;
+        }
+
+        .comment-item {
+            background: rgba(255, 105, 180, 0.3);
+            margin: 10px auto;
+            padding: 10px 20px;
+            border-radius: 15px;
+            width: fit-content;
+            max-width: 80%;
+            text-align: left;
+            animation: fadeIn 0.5s ease-in;
+            position: relative;
+        }
+
+        .comment-heart {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            color: #ffeb3b;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: transform 0.2s;
+        }
+
+        .comment-heart:hover {
+            transform: scale(1.5);
         }
 
         /* Floating hearts */
@@ -144,6 +206,16 @@
         @keyframes imgIntro { from {transform: scale(0);} to {transform: scale(1);} }
         @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
         @keyframes float { 0% {transform: translateY(0) rotate(45deg);} 100% {transform: translateY(-800px) rotate(45deg);} }
+        @keyframes sparkle { 0% {opacity:1; transform: scale(1);} 100% {opacity:0; transform: scale(2);} }
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: yellow;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkle 0.6s forwards;
+        }
     </style>
 </head>
 <body>
@@ -151,7 +223,7 @@
     <header>
         <h1>❤️ To My Love ❤️</h1>
         <p>You are my sunshine and my heart 💖</p>
-        <img src="peu&deb.jpg" alt="Us Together">
+        <img src="your_photo.jpg" alt="Us Together">
     </header>
 
     <section class="gallery">
@@ -168,6 +240,13 @@
 
     <section class="countdown">
         Birthday Countdown: <span id="countdown"></span>
+    </section>
+
+    <section class="comments">
+        <h2>Leave a Comment 💌</h2>
+        <input type="text" id="commentInput" placeholder="Type your comment here..." />
+        <button id="commentBtn">Post Comment</button>
+        <div id="commentList"></div>
     </section>
 
     <footer>
@@ -187,7 +266,7 @@
 
         // Birthday countdown
         const countdownEl = document.getElementById('countdown');
-        const birthday = new Date("2025-11-19 00:00:00"); // Replace with her birthday
+        const birthday = new Date("YYYY-MM-DDT00:00:00"); // Replace with her birthday
 
         function updateCountdown() {
             const now = new Date();
@@ -205,7 +284,7 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // Create floating hearts
+        // Floating hearts
         for(let i = 0; i < 40; i++){
             const heart = document.createElement('div');
             heart.classList.add('heart');
@@ -213,6 +292,55 @@
             heart.style.animationDuration = 3 + Math.random() * 5 + 's';
             document.body.appendChild(heart);
         }
+
+        // Comment Section with hearts and sparkle animation
+        const commentBtn = document.getElementById('commentBtn');
+        const commentInput = document.getElementById('commentInput');
+        const commentList = document.getElementById('commentList');
+
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle');
+            sparkle.style.left = x + 'px';
+            sparkle.style.top = y + 'px';
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 600);
+        }
+
+        commentBtn.addEventListener('click', () => {
+            const comment = commentInput.value.trim();
+            if(comment) {
+                const div = document.createElement('div');
+                div.classList.add('comment-item');
+
+                const span = document.createElement('span');
+                span.textContent = '';
+                div.appendChild(span);
+                commentList.appendChild(div);
+
+                // Typing effect
+                let i = 0;
+                function type() {
+                    if(i < comment.length){
+                        span.textContent += comment.charAt(i);
+                        i++;
+                        setTimeout(type, 50);
+                    }
+                }
+                type();
+
+                // Add heart reaction
+                const heart = document.createElement('span');
+                heart.innerHTML = '❤️';
+                heart.classList.add('comment-heart');
+                div.appendChild(heart);
+                heart.addEventListener('click', () => {
+                    createSparkle(heart.getBoundingClientRect().left, heart.getBoundingClientRect().top);
+                });
+
+                commentInput.value = '';
+            }
+        });
     </script>
 
 </body>
