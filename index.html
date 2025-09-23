@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Body and background */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            color: #fff;
+        }
+
+        /* Glowing header */
+        header {
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            animation: fadeInDown 2s ease-out;
+        }
+
+        header h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 4em;
+            color: #ff69b4;
+            text-shadow: 0 0 10px #fff, 0 0 20px #ff69b4, 0 0 30px #ff69b4;
+            opacity: 0;
+            animation: glowIntro 2s forwards;
+        }
+
+        header p {
+            font-size: 1.8em;
+            margin-top: 10px;
+            opacity: 0;
+            animation: fadeInUp 2s forwards 1s;
+        }
+
+        header img {
+            max-width: 300px;
+            border-radius: 20px;
+            margin-top: 30px;
+            box-shadow: 0 0 30px rgba(255,255,255,0.6);
+            transform: scale(0);
+            animation: imgIntro 2s forwards 2s;
+        }
+
+        /* Gallery section */
+        .gallery {
+            text-align: center;
+            padding: 50px 20px;
+            animation: fadeIn 2s ease-in;
+        }
+
+        .gallery h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3em;
+            color: #ff1493;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #fff, 0 0 20px #ff1493;
+            animation: glowIntro 2s forwards;
+        }
+
+        .gallery img {
+            width: 200px;
+            margin: 15px;
+            border-radius: 20px;
+            transition: transform 0.4s, box-shadow 0.4s;
+            cursor: pointer;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1) rotate(-5deg);
+            box-shadow: 0 0 25px #fff, 0 0 50px #ff69b4;
+        }
+
+        /* Hidden message */
+        .love-note {
+            text-align: center;
+            margin: 50px 20px;
+            font-size: 2em;
+            color: #fff;
+            cursor: pointer;
+            position: relative;
+            animation: fadeInUp 2s forwards;
+        }
+
+        .hidden-message {
+            display: none;
+            font-size: 2.5em;
+            color: #ffeb3b;
+            margin-top: 20px;
+            text-shadow: 0 0 10px #fff, 0 0 20px #ffeb3b;
+            animation: fadeIn 1s forwards;
+        }
+
+        /* Countdown */
+        .countdown {
+            text-align: center;
+            margin: 50px 20px;
+            font-size: 2em;
+            color: #fff;
+            text-shadow: 0 0 10px #fff, 0 0 20px #ff69b4;
+            animation: fadeIn 2s forwards;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            font-size: 1.3em;
+            color: #fff;
+            text-shadow: 0 0 10px #fff;
+        }
+
+        /* Floating hearts */
+        .heart {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            background: #ff1493;
+            transform: rotate(45deg);
+            animation: float 5s linear infinite;
+        }
+
+        .heart:before, .heart:after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: #ff1493;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart:before { top: -10px; left: 0; }
+        .heart:after { left: 10px; top: 0; }
+
+        /* Keyframes */
+        @keyframes fadeInDown { from {opacity:0; transform: translateY(-50px);} to {opacity:1; transform: translateY(0);} }
+        @keyframes fadeInUp { from {opacity:0; transform: translateY(50px);} to {opacity:1; transform: translateY(0);} }
+        @keyframes glowIntro { from {opacity:0; text-shadow: none;} to {opacity:1; text-shadow:0 0 10px #fff,0 0 20px #ff69b4,0 0 30px #ff69b4;} }
+        @keyframes imgIntro { from {transform: scale(0);} to {transform: scale(1);} }
+        @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+        @keyframes float { 0% {transform: translateY(0) rotate(45deg);} 100% {transform: translateY(-800px) rotate(45deg);} }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>❤️ To My Love ❤️</h1>
+        <p>You are my sunshine and my heart 💖</p>
+        <img src="your_photo.jpg" alt="Us Together">
+    </header>
+
+    <section class="gallery">
+        <h2>Our Memories</h2>
+        <img src="photo1.jpg" alt="Memory 1">
+        <img src="photo2.jpg" alt="Memory 2">
+        <img src="photo3.jpg" alt="Memory 3">
+    </section>
+
+    <section class="love-note">
+        Tap here for a secret message 💌
+        <div class="hidden-message">I love you forever and always ❤️</div>
+    </section>
+
+    <section class="countdown">
+        Birthday Countdown: <span id="countdown"></span>
+    </section>
+
+    <footer>
+        Made with ❤️ by me, for you.
+    </footer>
+
+    <!-- Background music -->
+    <audio src="your_song.mp3" autoplay loop></audio>
+
+    <script>
+        // Hidden message toggle
+        const loveNote = document.querySelector('.love-note');
+        const hiddenMessage = document.querySelector('.hidden-message');
+        loveNote.addEventListener('click', () => {
+            hiddenMessage.style.display = hiddenMessage.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Birthday countdown
+        const countdownEl = document.getElementById('countdown');
+        const birthday = new Date("2025-11-19 00:00:00"); // Replace with her birthday
+
+        function updateCountdown() {
+            const now = new Date();
+            const diff = birthday - now;
+            if(diff > 0){
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((diff / (1000 * 60)) % 60);
+                const seconds = Math.floor((diff / 1000) % 60);
+                countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            } else {
+                countdownEl.innerHTML = "🎉 Happy Birthday! 🎉";
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Create floating hearts
+        for(let i = 0; i < 40; i++){
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.animationDuration = 3 + Math.random() * 5 + 's';
+            document.body.appendChild(heart);
+        }
+    </script>
+
+</body>
+</html>
