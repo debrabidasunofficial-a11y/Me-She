@@ -9,7 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&display=swap" rel="stylesheet">
 
   <style>
-    /* General */
     body {
       margin: 0;
       padding: 0;
@@ -19,16 +18,14 @@
       overflow-x: hidden;
     }
 
-    h1, h2, h3, p {
-      animation: fadeInDown 1.5s ease forwards;
-    }
+    h1, h2, h3, p { animation: fadeInDown 1.5s ease forwards; }
 
     @keyframes fadeInDown {
       0% { opacity: 0; transform: translateY(-50px); }
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* Hero Section */
+    /* Hero */
     .hero {
       padding: 50px 20px;
       position: relative;
@@ -56,9 +53,7 @@
     }
 
     /* Memories */
-    .memories {
-      margin: 50px 20px;
-    }
+    .memories { margin: 50px 20px; }
     .memory-gallery {
       display: flex;
       justify-content: center;
@@ -71,9 +66,7 @@
       box-shadow: 0 0 20px pink;
       transition: transform 0.3s ease;
     }
-    .memory-gallery img:hover {
-      transform: scale(1.1);
-    }
+    .memory-gallery img:hover { transform: scale(1.1); }
     .us-photo {
       width: 300px;
       border-radius: 25px;
@@ -82,9 +75,7 @@
     }
 
     /* Hidden Note */
-    .hidden-note {
-      margin: 50px 20px;
-    }
+    .hidden-note { margin: 50px 20px; }
     .hidden-note button {
       background: #ffd700;
       color: #ff1493;
@@ -111,9 +102,7 @@
     }
 
     /* Poems Section */
-    .poems {
-      margin: 50px 20px;
-    }
+    .poems { margin: 50px 20px; }
     .poems h2 {
       font-family: 'Great Vibes', cursive;
       font-size: 2.5em;
@@ -165,19 +154,21 @@
       display: inline-block;
       max-width: 80%;
       animation: fadeInDown 1s ease-in;
+      position: relative;
     }
+    .poem-card button {
+      margin-left: 10px;
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-size: 1.2em;
+    }
+    .poem-card .edit-btn { color: #ffd700; }
+    .poem-card .delete-btn { color: #ff1493; }
 
     /* Comments */
-    .comments {
-      margin: 50px 20px;
-    }
-    #commentInput {
-      padding: 10px;
-      width: 250px;
-      border-radius: 10px;
-      border: none;
-      font-size: 1em;
-    }
+    .comments { margin: 50px 20px; }
+    #commentInput { padding: 10px; width: 250px; border-radius: 10px; border: none; font-size: 1em; }
     #commentBtn {
       padding: 10px 20px;
       margin-left: 10px;
@@ -189,29 +180,12 @@
       font-size: 1em;
       transition: transform 0.3s;
     }
-    #commentBtn:hover {
-      transform: scale(1.1);
-    }
-    #commentList {
-      margin-top: 20px;
-      font-size: 1.2em;
-      color: #d63384;
-    }
-    .comment-item {
-      background: rgba(255, 105, 180, 0.3);
-      margin: 10px auto;
-      padding: 10px 20px;
-      border-radius: 15px;
-      width: fit-content;
-      max-width: 80%;
-      text-align: left;
-      animation: fadeInDown 0.5s ease-in;
-    }
+    #commentBtn:hover { transform: scale(1.1); }
+    #commentList { margin-top: 20px; font-size: 1.2em; color: #d63384; }
+    .comment-item { background: rgba(255,105,180,0.3); margin: 10px auto; padding: 10px 20px; border-radius: 15px; width: fit-content; max-width: 80%; text-align: left; animation: fadeInDown 0.5s ease-in; }
 
     /* Music Player */
-    audio {
-      margin-top: 20px;
-    }
+    audio { margin-top: 20px; }
 
     /* Flying hearts */
     .heart {
@@ -287,13 +261,11 @@
     function updateCountdown() {
       const now = new Date();
       let birthday = new Date(now.getFullYear() + "-11-19T00:00:00");
-      if (now > birthday) {
-        birthday.setFullYear(now.getFullYear() + 1);
-      }
+      if (now > birthday) birthday.setFullYear(now.getFullYear() + 1);
       const diff = birthday - now;
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const days = Math.floor(diff / (1000*60*60*24));
+      const hours = Math.floor((diff / (1000*60*60)) % 24);
+      const minutes = Math.floor((diff / (1000*60)) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
       document.getElementById("countdown").textContent =
         `${days}d ${hours}h ${minutes}m ${seconds}s left until your birthday 🎂`;
@@ -303,10 +275,10 @@
 
     // Relationship Counter (Since July 18)
     function updateRelationship() {
-      const startDate = new Date("2025-07-18T00:00:00");
+      const startDate = new Date("2024-07-18T00:00:00");
       const now = new Date();
       const diff = now - startDate;
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const days = Math.floor(diff / (1000*60*60*24));
       document.getElementById("relationship").textContent =
         `💑 We've been together for ${days} days 💖`;
     }
@@ -333,21 +305,63 @@
       }
     });
 
-    // Poems Section Script
+    // Poems Section with Local Storage, Edit & Delete
     const addPoemBtn = document.getElementById("addPoemBtn");
     const poemInput = document.getElementById("poemInput");
     const poemList = document.getElementById("poemList");
 
+    // Load saved poems
+    let savedPoems = JSON.parse(localStorage.getItem("poems")) || [];
+    savedPoems.forEach((text, index) => addPoemCard(text, index));
+
+    // Add new poem
     addPoemBtn.addEventListener("click", () => {
       const text = poemInput.value.trim();
       if (text) {
-        const div = document.createElement("div");
-        div.classList.add("poem-card");
-        div.textContent = text;
-        poemList.appendChild(div);
+        savedPoems.push(text);
+        localStorage.setItem("poems", JSON.stringify(savedPoems));
+        addPoemCard(text, savedPoems.length - 1);
         poemInput.value = "";
       }
     });
+
+    function addPoemCard(text, index) {
+      const div = document.createElement("div");
+      div.classList.add("poem-card");
+      div.textContent = text;
+
+      // Edit button
+      const editBtn = document.createElement("button");
+      editBtn.textContent = "✏️";
+      editBtn.classList.add("edit-btn");
+      editBtn.addEventListener("click", () => {
+        const newText = prompt("Edit your poem:", text);
+        if (newText !== null && newText.trim() !== "") {
+          savedPoems[index] = newText.trim();
+          localStorage.setItem("poems", JSON.stringify(savedPoems));
+          refreshPoems();
+        }
+      });
+
+      // Delete button
+      const delBtn = document.createElement("button");
+      delBtn.textContent = "❌";
+      delBtn.classList.add("delete-btn");
+      delBtn.addEventListener("click", () => {
+        savedPoems.splice(index, 1);
+        localStorage.setItem("poems", JSON.stringify(savedPoems));
+        refreshPoems();
+      });
+
+      div.appendChild(editBtn);
+      div.appendChild(delBtn);
+      poemList.appendChild(div);
+    }
+
+    function refreshPoems() {
+      poemList.innerHTML = "";
+      savedPoems.forEach((txt, idx) => addPoemCard(txt, idx));
+    }
 
     // Flying hearts
     function createHeart() {
@@ -355,12 +369,9 @@
       heart.classList.add("heart");
       heart.textContent = "❤️";
       heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (3 + Math.random() * 5) + "s";
+      heart.style.animationDuration = (3 + Math.random()*5) + "s";
       document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 8000);
+      setTimeout(() => { heart.remove(); }, 8000);
     }
     setInterval(createHeart, 800);
   </script>
