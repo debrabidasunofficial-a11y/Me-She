@@ -205,8 +205,11 @@
   <section class="gallery">
     <h2>Our Memories</h2>
     <div class="row">
-      <img src="photo1.jpg" alt="memory1"       <img src="photo2.jpg" alt="memory2" 
-      <img src="photo3.jpg" alt="memory3"     </div>
+      <img src="photo1.jpg" alt="memory1"      
+      <img src="photo2.jpg" alt="memory2" 
+      <img src="photo3.jpg" alt="memory3"
+     <img src="photo4.jpeg" alt="memory4"      
+        </div>
   </section>
 
   <!-- SURPRISE NOTE -->
@@ -253,23 +256,38 @@
          "MM-DD"   (e.g. "11-19")  -- this will auto-target the next occurrence
        OR  "YYYY-MM-DD" (e.g. "2024-11-19")
     ===================================== */
-    const BIRTHDAY = "12-15"; // <<< REPLACE THIS with her birthday (MM-DD or YYYY-MM-DD)
+    const BIRTHDAY = "11-19"; // <<< REPLACE THIS with her birthday (MM-DD or YYYY-MM-DD)
 
     /* ---------- Hidden note reveal ---------- */
-    const revealBtn = document.getElementById('revealBtn');
-    const hiddenNote = document.getElementById('hiddenNote');
-    revealBtn.addEventListener('click', () => {
-      if(hiddenNote.classList.contains('revealed')){
-        hiddenNote.classList.remove('revealed');
-        hiddenNote.setAttribute('aria-hidden','true');
-      } else {
-        hiddenNote.classList.add('revealed');
-        hiddenNote.setAttribute('aria-hidden','false');
-        // small sparkle / emphasis (temporary scale)
-        hiddenNote.animate([{transform:'scale(.96)'},{transform:'scale(1.02)'},{transform:'scale(1)'}],{duration:420});
-      }
-    });
+    <section class="hidden-note">
+    <h2>💌 A Hidden Message 💌</h2>
+    <button onclick="revealNote()">Click Me ❤️</button>
+    <div id="loveNote">
+        <p>From the moment you walked into my life, everything changed forever 💖</p>
+        <p>You are my best friend, my smile, my safe place, and my greatest love ✨</p>
+        <p>Every heartbeat whispers your name, every dream paints your face 🌙</p>
+        <p>No distance, no time, nothing in this world can ever change what I feel for you 💕</p>
+        <p>You are not just my today, you are all of my tomorrows... Forever and Always ❤️</p>
+    </div>
+</section>
+   
+    #loveNote {
+  margin-top: 20px;
+  font-size: 1.4em;
+  color: #fffacd;
+  display: none;
+  line-height: 1.8em;
+  text-shadow: 0 0 10px #000, 0 0 15px #ff1493;
+  animation: fadeInDown 1.5s ease forwards;
+}
+#loveNote p {
+  margin: 10px 0;
+}
 
+    function revealNote() {
+  document.getElementById("loveNote").style.display = "block";
+    }
+    
     /* ---------- Parse birthday & compute next occurrence ---------- */
     function getNextBirthdayDate(month, day){
       const now = new Date();
