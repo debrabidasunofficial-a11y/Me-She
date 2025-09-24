@@ -1,373 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>For My Love ❤️</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>For My Love ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script&family=Satisfy&family=Pacifico&family=Indie+Flower&family=Roboto&display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script&family=Satisfy&family=Pacifico&family=Indie+Flower&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Dancing Script', cursive;
-      background: #ffe4ec; /* light pink */
-      text-align: center;
-      overflow-x: hidden;
-    }
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background: #ffe4ec;
+  text-align: center;
+  overflow-x: hidden;
+}
 
-    h1, h2, h3, p { animation: fadeInDown 1.5s ease forwards; }
+/* Animation for text and images */
+@keyframes fadeInDown {
+  0% { opacity: 0; transform: translateY(-50px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.fade-in { opacity: 0; transform: translateY(-50px); animation: fadeInDown 1s forwards; }
 
-    @keyframes fadeInDown {
-      0% { opacity: 0; transform: translateY(-50px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
+/* Hero / Surprise Note */
+.hero { padding: 50px 20px; position: relative; }
+.hero .surprise-note {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3em;
+  color: #ffd700;
+  text-shadow: 0 0 10px #ff69b4, 0 0 20px #fff;
+  animation: glow 2s infinite alternate;
+}
+@keyframes glow {
+  from { text-shadow: 0 0 5px #ff69b4; }
+  to { text-shadow: 0 0 20px #ff1493, 0 0 30px #fff; }
+}
 
-    /* Hero / Surprise Note */
-    .hero {
-      padding: 50px 20px;
-      position: relative;
-    }
-    .hero .surprise-note {
-      font-family: 'Great Vibes', cursive;
-      font-size: 3em;
-      color: #ffd700;
-      text-shadow: 0 0 10px #ff69b4, 0 0 20px #fff;
-      animation: glow 2s infinite alternate;
-    }
-    @keyframes glow {
-      from { text-shadow: 0 0 5px #ff69b4; }
-      to { text-shadow: 0 0 20px #ff1493, 0 0 30px #fff; }
-    }
+/* Counters */
+#countdown, #relationship {
+  font-size: 1.5em;
+  margin-top: 20px;
+  color: #d63384;
+  text-shadow: 0 0 10px #fff;
+  font-family: 'Dancing Script', cursive;
+}
 
-    /* Counters */
-    #countdown, #relationship {
-      font-size: 1.5em;
-      margin-top: 20px;
-      color: #d63384;
-      text-shadow: 0 0 10px #fff;
-      font-family: 'Indie Flower', cursive;
-    }
+/* Memories */
+.memories { margin: 50px 20px; }
+.memories h2, .memories h3 { font-family: 'Dancing Script', cursive; }
+.memory-gallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.memory-gallery img { width: 220px; border-radius: 20px; box-shadow: 0 0 20px pink; transition: transform 0.3s ease; }
+.memory-gallery img:hover { transform: scale(1.1); }
+.us-photo { width: 300px; border-radius: 25px; margin-top: 30px; box-shadow: 0 0 25px gold; }
 
-    /* Memories */
-    .memories { margin: 50px 20px; }
-    .memories h2, .memories h3 { font-family: 'Dancing Script', cursive; }
-    .memory-gallery {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-    .memory-gallery img {
-      width: 220px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px pink;
-      transition: transform 0.3s ease;
-    }
-    .memory-gallery img:hover { transform: scale(1.1); }
-    .us-photo {
-      width: 300px;
-      border-radius: 25px;
-      margin-top: 30px;
-      box-shadow: 0 0 25px gold;
-    }
+/* Hidden Note */
+.hidden-note { margin: 50px 20px; }
+.hidden-note button {
+  background: #ffd700; color: #ff1493; font-weight: bold; border: none;
+  padding: 12px 20px; border-radius: 20px; cursor: pointer;
+  box-shadow: 0 0 10px #ff1493; transition: transform 0.3s ease;
+  font-family: 'Satisfy', cursive; font-size: 1.2em;
+}
+.hidden-note button:hover { transform: scale(1.1); background: #ff69b4; color: #fff; }
+.hidden-note #loveNote {
+  margin-top: 20px; font-size: 1.4em; color: #d63384;
+  display: none; line-height: 1.8em; animation: fadeInDown 1.5s ease forwards;
+  font-family: 'Satisfy', cursive;
+}
 
-    /* Hidden Note */
-    .hidden-note { margin: 50px 20px; }
-    .hidden-note button {
-      background: #ffd700;
-      color: #ff1493;
-      font-weight: bold;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 20px;
-      cursor: pointer;
-      box-shadow: 0 0 10px #ff1493;
-      transition: transform 0.3s ease;
-    }
-    .hidden-note button:hover {
-      transform: scale(1.1);
-      background: #ff69b4;
-      color: #fff;
-    }
-    .hidden-note #loveNote {
-      margin-top: 20px;
-      font-size: 1.4em;
-      color: #d63384;
-      display: none;
-      line-height: 1.8em;
-      animation: fadeInDown 1.5s ease forwards;
-      font-family: 'Satisfy', cursive;
-    }
+/* Poems */
+.poems { margin: 50px 20px; }
+.poems h2 { font-family: 'Pacifico', cursive; font-size: 2.5em; color: #ff1493; text-shadow: 0 0 10px #ffd700; margin-bottom: 20px; }
+#poemInput { width: 70%; padding: 12px; border-radius: 15px; border: none; font-size: 1.1em; font-family: 'Pacifico', cursive; box-shadow: 0 0 10px #ff69b4; }
+#addPoemBtn {
+  padding: 10px 20px; margin-top: 10px; background: #ff1493; color: #fff; font-size: 1.1em; border: none; border-radius: 15px; cursor: pointer; transition: transform 0.3s ease; font-family: 'Pacifico', cursive;
+}
+#addPoemBtn:hover { transform: scale(1.1); background: #ffd700; color: #ff1493; }
+#poemList { margin-top: 30px; display: flex; flex-direction: column; gap: 20px; align-items: center; }
+.poem-card {
+  background: #fff; padding: 20px 25px; border-radius: 20px; box-shadow: 0 0 15px pink;
+  font-size: 1.3em; color: #ff1493; font-family: 'Pacifico', cursive; text-align: center;
+  display: inline-block; max-width: 80%; animation: fadeInDown 1s ease-in; position: relative;
+}
+.poem-card button { margin-left: 10px; cursor: pointer; border: none; background: none; font-size: 1.2em; }
+.poem-card .edit-btn { color: #ffd700; } .poem-card .delete-btn { color: #ff1493; }
 
-    /* Poems Section */
-    .poems { margin: 50px 20px; }
-    .poems h2 { font-family: 'Pacifico', cursive; font-size: 2.5em; color: #ff1493; text-shadow: 0 0 10px #ffd700; margin-bottom: 20px; }
-    #poemInput {
-      width: 70%;
-      padding: 12px;
-      border-radius: 15px;
-      border: none;
-      font-size: 1.1em;
-      font-family: 'Pacifico', cursive;
-      box-shadow: 0 0 10px #ff69b4;
-    }
-    #addPoemBtn {
-      padding: 10px 20px;
-      margin-top: 10px;
-      background: #ff1493;
-      color: #fff;
-      font-size: 1.1em;
-      border: none;
-      border-radius: 15px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-    #addPoemBtn:hover {
-      transform: scale(1.1);
-      background: #ffd700;
-      color: #ff1493;
-    }
-    #poemList {
-      margin-top: 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      align-items: center;
-    }
-    .poem-card {
-      background: #fff;
-      padding: 20px 25px;
-      border-radius: 20px;
-      box-shadow: 0 0 15px pink;
-      font-size: 1.3em;
-      color: #ff1493;
-      font-family: 'Pacifico', cursive;
-      text-align: center;
-      display: inline-block;
-      max-width: 80%;
-      animation: fadeInDown 1s ease-in;
-      position: relative;
-    }
-    .poem-card button {
-      margin-left: 10px;
-      cursor: pointer;
-      border: none;
-      background: none;
-      font-size: 1.2em;
-    }
-    .poem-card .edit-btn { color: #ffd700; }
-    .poem-card .delete-btn { color: #ff1493; }
+/* Comments */
+.comments { margin: 50px 20px; }
+.comments h2, #commentList, #commentInput { font-family: 'Indie Flower', cursive; }
+#commentInput { padding: 10px; width: 250px; border-radius: 10px; border: none; font-size: 1em; }
+#commentBtn {
+  padding: 10px 20px; margin-left: 10px; background-color: #ff69b4; color: #fff;
+  border: none; border-radius: 10px; cursor: pointer; font-size: 1em; transition: transform 0.3s;
+  font-family: 'Indie Flower', cursive;
+}
+#commentBtn:hover { transform: scale(1.1); }
+#commentList { margin-top: 20px; font-size: 1.2em; color: #d63384; }
+.comment-item { background: rgba(255,105,180,0.3); margin: 10px auto; padding: 10px 20px; border-radius: 15px; width: fit-content; max-width: 80%; text-align: left; animation: fadeInDown 0.5s ease-in; }
 
-    /* Comments */
-    .comments { margin: 50px 20px; }
-    .comments h2, #commentList, #commentInput { font-family: 'Roboto', sans-serif; }
-    #commentInput { padding: 10px; width: 250px; border-radius: 10px; border: none; font-size: 1em; }
-    #commentBtn {
-      padding: 10px 20px;
-      margin-left: 10px;
-      background-color: #ff69b4;
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 1em;
-      transition: transform 0.3s;
-    }
-    #commentBtn:hover { transform: scale(1.1); }
-    #commentList { margin-top: 20px; font-size: 1.2em; color: #d63384; }
-    .comment-item { background: rgba(255,105,180,0.3); margin: 10px auto; padding: 10px 20px; border-radius: 15px; width: fit-content; max-width: 80%; text-align: left; animation: fadeInDown 0.5s ease-in; }
+/* Music */
+audio { margin-top: 20px; }
 
-    /* Music Player */
-    audio { margin-top: 20px; }
+/* Flying Hearts */
+.heart {
+  position: fixed; bottom: -20px; color: red; font-size: 24px; animation: floatUp 5s linear infinite; z-index: 9999;
+}
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+}
 
-    /* Flying hearts */
-    .heart {
-      position: fixed;
-      bottom: -20px;
-      color: red;
-      font-size: 24px;
-      animation: floatUp 5s linear infinite;
-      z-index: 9999;
-    }
-    @keyframes floatUp {
-      0% { transform: translateY(0) scale(1); opacity: 1; }
-      100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
-    }
-  </style>
+/* Animate images */
+.memory-gallery img:nth-child(1) { animation-delay: 0.2s; }
+.memory-gallery img:nth-child(2) { animation-delay: 0.4s; }
+.memory-gallery img:nth-child(3) { animation-delay: 0.6s; }
+.memory-gallery img:nth-child(4) { animation-delay: 0.8s; }
+.us-photo { animation-delay: 1s; }
+</style>
 </head>
 <body>
 
-  <!-- Hero -->
-  <section class="hero">
-    <h1 class="surprise-note">Surprise My Love ❤️</h1>
-    <p>Every moment with you is magic ✨</p>
-    <div id="countdown"></div>
-    <div id="relationship"></div>
-    <audio id="bg-music" autoplay loop controls>
-      <source src="your_song.mp3" type="audio/mpeg">
-    </audio>
-  </section>
+<!-- Hero -->
+<section class="hero">
+<h1 class="surprise-note fade-in">Surprise My Love ❤️</h1>
+<p class="fade-in">Every moment with you is magic ✨</p>
+<div id="countdown" class="fade-in"></div>
+<div id="relationship" class="fade-in"></div>
+<audio id="bg-music" autoplay loop controls>
+<source src="your_song.mp3" type="audio/mpeg">
+</audio>
+</section>
 
-  <!-- Memories -->
-  <section class="memories">
-    <h2>💞 Our Sweet Memories 💞</h2>
-    <div class="memory-gallery">
-      <img src="photo1.jpg" alt="Memory 1">
-      <img src="photo2.jpg" alt="Memory 2">
-      <img src="photo3.jpg" alt="Memory 3">
-    </div>
-    <h3>💖 The Most Special One 💖</h3>
-    <img src="peu&deb.jpg" alt="Us Together" class="us-photo">
-  </section>
+<!-- Memories -->
+<section class="memories">
+<h2 class="fade-in">💞 Our Sweet Memories 💞</h2>
+<div class="memory-gallery">
+  <img src="photo1.jpg" alt="Memory 1" class="fade-in">
+  <img src="photo2.jpg" alt="Memory 2" class="fade-in">
+  <img src="photo3.jpg" alt="Memory 3" class="fade-in">
+</div>
+<h3 class="fade-in">💖 The Most Special One 💖</h3>
+<img src="peu&deb.jpg" alt="Us Together" class="us-photo fade-in">
+</section>
 
-  <!-- Hidden Note -->
-  <section class="hidden-note">
-    <h2>💌 A Hidden Message 💌</h2>
-    <button onclick="revealNote()">Click Me ❤️</button>
-    <div id="loveNote">
-      <p>From the moment you walked into my life, everything changed forever 💖</p>
-      <p>You are my best friend, my smile, my safe place, and my greatest love ✨</p>
-      <p>Every heartbeat whispers your name, every dream paints your face 🌙</p>
-      <p>No distance, no time, nothing in this world can ever change what I feel for you 💕</p>
-      <p>You are not just my today, you are all of my tomorrows... Forever and Always ❤️</p>
-    </div>
-  </section>
+<!-- Hidden Note -->
+<section class="hidden-note">
+<h2>💌 A Hidden Message 💌</h2>
+<button onclick="revealNote()">Click Me ❤️</button>
+<div id="loveNote">
+<p>From the moment you walked into my life, everything changed forever 💖</p>
+<p>You are my best friend, my smile, my safe place, and my greatest love ✨</p>
+<p>Every heartbeat whispers your name, every dream paints your face 🌙</p>
+<p>No distance, no time, nothing in this world can ever change what I feel for you 💕</p>
+<p>You are not just my today, you are all of my tomorrows... Forever and Always ❤️</p>
+</div>
+</section>
 
-  <!-- Poems Section -->
-  <section class="poems">
-    <h2>📜 My Poems for You 💖</h2>
-    <textarea id="poemInput" placeholder="Write a poem here..." rows="4"></textarea><br>
-    <button id="addPoemBtn">Add Poem</button>
-    <div id="poemList"></div>
-  </section>
+<!-- Poems Section -->
+<section class="poems">
+<h2>📜 My Poems for You 💖</h2>
+<textarea id="poemInput" placeholder="Write a poem here..." rows="4"></textarea><br>
+<button id="addPoemBtn">Add Poem</button>
+<div id="poemList"></div>
+</section>
 
-  <!-- Comments -->
-  <section class="comments">
-    <h2>Leave a Comment 💌</h2>
-    <input type="text" id="commentInput" placeholder="Type your comment here..." />
-    <button id="commentBtn">Post Comment</button>
-    <div id="commentList"></div>
-  </section>
+<!-- Comments Section -->
+<section class="comments">
+<h2>Leave a Comment 💌</h2>
+<input type="text" id="commentInput" placeholder="Type your comment here..." />
+<button id="commentBtn">Post Comment</button>
+<div id="commentList"></div>
+</section>
 
-  <script>
-    // Birthday Countdown
-    function updateCountdown() {
-      const now = new Date();
-      let birthday = new Date(now.getFullYear() + "-11-19T00:00:00");
-      if (now > birthday) birthday.setFullYear(now.getFullYear() + 1);
-      const diff = birthday - now;
-      const days = Math.floor(diff / (1000*60*60*24));
-      const hours = Math.floor((diff / (1000*60*60)) % 24);
-      const minutes = Math.floor((diff / (1000*60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-      document.getElementById("countdown").textContent =
-        `${days}d ${hours}h ${minutes}m ${seconds}s left until your birthday 🎂`;
+<script>
+// Birthday Countdown
+function updateCountdown() {
+  const now = new Date();
+  let birthday = new Date(now.getFullYear() + "-11-19T00:00:00");
+  if (now > birthday) birthday.setFullYear(now.getFullYear() + 1);
+  const diff = birthday - now;
+  const days = Math.floor(diff / (1000*60*60*24));
+  const hours = Math.floor((diff / (1000*60*60)) % 24);
+  const minutes = Math.floor((diff / (1000*60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+  document.getElementById("countdown").textContent =
+    `${days}d ${hours}h ${minutes}m ${seconds}s left until your birthday 🎂`;
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+// Relationship Counter since 18 July
+function updateRelationship() {
+  const startDate = new Date("2025-07-18T00:00:00");
+  const now = new Date();
+  const diff = now - startDate;
+  const days = Math.floor(diff / (1000*60*60*24));
+  document.getElementById("relationship").textContent =
+    `💑 We've been together for ${days} days 💖`;
+}
+updateRelationship();
+
+// Reveal Hidden Note
+function revealNote() {
+  document.getElementById("loveNote").style.display = "block";
+}
+
+// Comments
+const commentBtn = document.getElementById('commentBtn');
+const commentInput = document.getElementById('commentInput');
+const commentList = document.getElementById('commentList');
+commentBtn.addEventListener('click', () => {
+  const comment = commentInput.value.trim();
+  if(comment) {
+    const div = document.createElement('div');
+    div.classList.add('comment-item');
+    div.textContent = comment;
+    commentList.appendChild(div);
+    commentInput.value = '';
+  }
+});
+
+// Poems with Local Storage
+const addPoemBtn = document.getElementById("addPoemBtn");
+const poemInput = document.getElementById("poemInput");
+const poemList = document.getElementById("poemList");
+
+let savedPoems = JSON.parse(localStorage.getItem("poems")) || [];
+savedPoems.forEach((text, index) => addPoemCard(text, index));
+
+addPoemBtn.addEventListener("click", () => {
+  const text = poemInput.value.trim();
+  if (text) {
+    savedPoems.push(text);
+    localStorage.setItem("poems", JSON.stringify(savedPoems));
+    addPoemCard(text, savedPoems.length - 1);
+    poemInput.value = "";
+  }
+});
+
+function addPoemCard(text, index) {
+  const div = document.createElement("div");
+  div.classList.add("poem-card");
+  div.textContent = text;
+
+  const editBtn = document.createElement("button");
+  editBtn.textContent = "✏️";
+  editBtn.classList.add("edit-btn");
+  editBtn.addEventListener("click", () => {
+    const newText = prompt("Edit your poem:", text);
+    if (newText !== null && newText.trim() !== "") {
+      savedPoems[index] = newText.trim();
+      localStorage.setItem("poems", JSON.stringify(savedPoems));
+      refreshPoems();
     }
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
+  });
 
-    // Relationship Counter since 18 July
-    function updateRelationship() {
-      const startDate = new Date("2025-07-18T00:00:00");
-      const now = new Date();
-      const diff = now - startDate;
-      const days = Math.floor(diff / (1000*60*60*24));
-      document.getElementById("relationship").textContent =
-        `💑 We've been together for ${days} days 💖`;
-    }
-    updateRelationship();
+  const delBtn = document.createElement("button");
+  delBtn.textContent = "❌";
+  delBtn.classList.add("delete-btn");
+  delBtn.addEventListener("click", () => {
+    savedPoems.splice(index, 1);
+    localStorage.setItem("poems", JSON.stringify(savedPoems));
+    refreshPoems();
+  });
 
-    // Reveal Hidden Note
-    function revealNote() {
-      document.getElementById("loveNote").style.display = "block";
-    }
+  div.appendChild(editBtn);
+  div.appendChild(delBtn);
+  poemList.appendChild(div);
+}
 
-    // Comment Section
-    const commentBtn = document.getElementById('commentBtn');
-    const commentInput = document.getElementById('commentInput');
-    const commentList = document.getElementById('commentList');
+function refreshPoems() {
+  poemList.innerHTML = "";
+  savedPoems.forEach((txt, idx) => addPoemCard(txt, idx));
+}
 
-    commentBtn.addEventListener('click', () => {
-      const comment = commentInput.value.trim();
-      if(comment) {
-        const div = document.createElement('div');
-        div.classList.add('comment-item');
-        div.textContent = comment;
-        commentList.appendChild(div);
-        commentInput.value = '';
-      }
-    });
-
-    // Poems Section with Local Storage, Edit & Delete
-    const addPoemBtn = document.getElementById("addPoemBtn");
-    const poemInput = document.getElementById("poemInput");
-    const poemList = document.getElementById("poemList");
-
-    let savedPoems = JSON.parse(localStorage.getItem("poems")) || [];
-    savedPoems.forEach((text, index) => addPoemCard(text, index));
-
-    addPoemBtn.addEventListener("click", () => {
-      const text = poemInput.value.trim();
-      if (text) {
-        savedPoems.push(text);
-        localStorage.setItem("poems", JSON.stringify(savedPoems));
-        addPoemCard(text, savedPoems.length - 1);
-        poemInput.value = "";
-      }
-    });
-
-    function addPoemCard(text, index) {
-      const div = document.createElement("div");
-      div.classList.add("poem-card");
-      div.textContent = text;
-
-      // Edit button
-      const editBtn = document.createElement("button");
-      editBtn.textContent = "✏️";
-      editBtn.classList.add("edit-btn");
-      editBtn.addEventListener("click", () => {
-        const newText = prompt("Edit your poem:", text);
-        if (newText !== null && newText.trim() !== "") {
-          savedPoems[index] = newText.trim();
-          localStorage.setItem("poems", JSON.stringify(savedPoems));
-          refreshPoems();
-        }
-      });
-
-      // Delete button
-      const delBtn = document.createElement("button");
-      delBtn.textContent = "❌";
-      delBtn.classList.add("delete-btn");
-      delBtn.addEventListener("click", () => {
-        savedPoems.splice(index, 1);
-        localStorage.setItem("poems", JSON.stringify(savedPoems));
-        refreshPoems();
-      });
-
-      div.appendChild(editBtn);
-      div.appendChild(delBtn);
-      poemList.appendChild(div);
-    }
-
-    function refreshPoems() {
-      poemList.innerHTML = "";
-      savedPoems.forEach((txt, idx) => addPoemCard(txt, idx));
-    }
-
-    // Flying hearts
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.textContent = "❤️";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (3 + Math.random()*5) + "s";
-      document.body.appendChild(heart);
-      setTimeout(() => { heart.remove(); }, 8000);
-    }
-    setInterval(createHeart, 800);
-  </script>
+// Flying hearts
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.textContent = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (3 + Math.random()*5) + "s";
+  document.body.appendChild(heart);
+  setTimeout(() => { heart.remove(); }, 8000);
+}
+setInterval(createHeart, 800);
+</script>
 </body>
 </html>
