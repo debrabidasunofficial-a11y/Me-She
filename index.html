@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script&family=Satisfy&family=Pacifico&family=Indie+Flower&family=Roboto&display=swap" rel="stylesheet">
 
   <style>
     body {
@@ -25,20 +25,18 @@
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* Hero */
+    /* Hero / Surprise Note */
     .hero {
       padding: 50px 20px;
       position: relative;
     }
-
-    .surprise-note {
+    .hero .surprise-note {
       font-family: 'Great Vibes', cursive;
       font-size: 3em;
       color: #ffd700;
       text-shadow: 0 0 10px #ff69b4, 0 0 20px #fff;
       animation: glow 2s infinite alternate;
     }
-
     @keyframes glow {
       from { text-shadow: 0 0 5px #ff69b4; }
       to { text-shadow: 0 0 20px #ff1493, 0 0 30px #fff; }
@@ -50,10 +48,12 @@
       margin-top: 20px;
       color: #d63384;
       text-shadow: 0 0 10px #fff;
+      font-family: 'Indie Flower', cursive;
     }
 
     /* Memories */
     .memories { margin: 50px 20px; }
+    .memories h2, .memories h3 { font-family: 'Dancing Script', cursive; }
     .memory-gallery {
       display: flex;
       justify-content: center;
@@ -92,31 +92,26 @@
       background: #ff69b4;
       color: #fff;
     }
-    #loveNote {
+    .hidden-note #loveNote {
       margin-top: 20px;
       font-size: 1.4em;
       color: #d63384;
       display: none;
       line-height: 1.8em;
       animation: fadeInDown 1.5s ease forwards;
+      font-family: 'Satisfy', cursive;
     }
 
     /* Poems Section */
     .poems { margin: 50px 20px; }
-    .poems h2 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 2.5em;
-      color: #ff1493;
-      text-shadow: 0 0 10px #ffd700;
-      margin-bottom: 20px;
-    }
+    .poems h2 { font-family: 'Pacifico', cursive; font-size: 2.5em; color: #ff1493; text-shadow: 0 0 10px #ffd700; margin-bottom: 20px; }
     #poemInput {
       width: 70%;
       padding: 12px;
       border-radius: 15px;
       border: none;
       font-size: 1.1em;
-      font-family: 'Dancing Script', cursive;
+      font-family: 'Pacifico', cursive;
       box-shadow: 0 0 10px #ff69b4;
     }
     #addPoemBtn {
@@ -149,7 +144,7 @@
       box-shadow: 0 0 15px pink;
       font-size: 1.3em;
       color: #ff1493;
-      font-family: 'Great Vibes', cursive;
+      font-family: 'Pacifico', cursive;
       text-align: center;
       display: inline-block;
       max-width: 80%;
@@ -168,6 +163,7 @@
 
     /* Comments */
     .comments { margin: 50px 20px; }
+    .comments h2, #commentList, #commentInput { font-family: 'Roboto', sans-serif; }
     #commentInput { padding: 10px; width: 250px; border-radius: 10px; border: none; font-size: 1em; }
     #commentBtn {
       padding: 10px 20px;
@@ -211,7 +207,7 @@
     <div id="countdown"></div>
     <div id="relationship"></div>
     <audio id="bg-music" autoplay loop controls>
-      <source src="your_song.mp3" type="audio/mpeg">
+      <source src="song.mp3" type="audio/mpeg">
     </audio>
   </section>
 
@@ -219,12 +215,13 @@
   <section class="memories">
     <h2>💞 Our Sweet Memories 💞</h2>
     <div class="memory-gallery">
-      <img src="photo1.jpg" alt="Memory 1">
-      <img src="photo2.jpg" alt="Memory 2">
-      <img src="photo3.jpg" alt="Memory 3">
+      <img src="memory1.jpg" alt="Memory 1">
+      <img src="memory2.jpg" alt="Memory 2">
+      <img src="memory3.jpg" alt="Memory 3">
+      <img src="memory4.jpg" alt="Memory 4">
     </div>
     <h3>💖 The Most Special One 💖</h3>
-    <img src="peu&deb.jpg" alt="Us Together" class="us-photo">
+    <img src="us.jpg" alt="Us Together" class="us-photo">
   </section>
 
   <!-- Hidden Note -->
@@ -257,7 +254,7 @@
   </section>
 
   <script>
-    // Birthday Countdown (Nov 19 every year)
+    // Birthday Countdown
     function updateCountdown() {
       const now = new Date();
       let birthday = new Date(now.getFullYear() + "-11-19T00:00:00");
@@ -273,9 +270,9 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // Relationship Counter (Since July 18)
+    // Relationship Counter since 18 July
     function updateRelationship() {
-      const startDate = new Date("2025-07-18T00:00:00");
+      const startDate = new Date("2024-07-18T00:00:00");
       const now = new Date();
       const diff = now - startDate;
       const days = Math.floor(diff / (1000*60*60*24));
@@ -284,7 +281,7 @@
     }
     updateRelationship();
 
-    // Hidden Note
+    // Reveal Hidden Note
     function revealNote() {
       document.getElementById("loveNote").style.display = "block";
     }
@@ -310,11 +307,9 @@
     const poemInput = document.getElementById("poemInput");
     const poemList = document.getElementById("poemList");
 
-    // Load saved poems
     let savedPoems = JSON.parse(localStorage.getItem("poems")) || [];
     savedPoems.forEach((text, index) => addPoemCard(text, index));
 
-    // Add new poem
     addPoemBtn.addEventListener("click", () => {
       const text = poemInput.value.trim();
       if (text) {
