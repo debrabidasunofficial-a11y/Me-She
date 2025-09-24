@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -9,7 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&family=Sacramento&family=Parisienne&family=Handlee&display=swap" rel="stylesheet">
 
   <style>
-    /* General */
     body {
       margin: 0;
       padding: 0;
@@ -33,7 +32,7 @@
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* Flying Hearts Animation */
+    /* Flying Hearts */
     .heart {
       position: fixed;
       bottom: -10px;
@@ -60,12 +59,19 @@
       color: #9b2226;
       animation-delay: 0.6s;
     }
+    #relationshipDays {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.6em;
+      color: #6a040f;
+      margin-top: 20px;
+      animation-delay: 1s;
+    }
     #countdown {
       font-family: 'Dancing Script', cursive;
-      font-size: 1.4em;
-      color: #6a040f;
-      margin-top: 15px;
-      animation-delay: 1s;
+      font-size: 1.3em;
+      color: #800f2f;
+      margin-top: 10px;
+      animation-delay: 1.3s;
     }
 
     /* Memories */
@@ -177,7 +183,6 @@
       animation: fadeUp 0.8s ease-in;
     }
 
-    /* Music */
     audio {
       margin-top: 20px;
     }
@@ -189,9 +194,10 @@
   <section class="hero">
     <h1>Surprise My Love ❤️</h1>
     <p>Every moment with you is magic ✨</p>
+    <div id="relationshipDays"></div>
     <div id="countdown"></div>
     <audio id="bg-music" autoplay loop controls>
-      <source src="your_song.mp3" type="audio/mpeg">
+      <source src="song.mp3" type="audio/mpeg">
     </audio>
   </section>
 
@@ -199,12 +205,13 @@
   <section class="memories">
     <h2>💞 Our Sweet Memories 💞</h2>
     <div class="memory-gallery">
-      <img src="photo1.jpg" alt="Memory 1" style="animation-delay:0.2s">
-      <img src="photo2.jpg" alt="Memory 2" style="animation-delay:0.4s">
-      <img src="photo3.jpg" alt="Memory 3" style="animation-delay:0.6s">
+      <img src="memory1.jpg" alt="Memory 1" style="animation-delay:0.2s">
+      <img src="memory2.jpg" alt="Memory 2" style="animation-delay:0.4s">
+      <img src="memory3.jpg" alt="Memory 3" style="animation-delay:0.6s">
+      <img src="memory4.jpg" alt="Memory 4" style="animation-delay:0.8s">
     </div>
     <h3 style="animation-delay:1s">💖 The Most Special One 💖</h3>
-    <img src="peu&deb.jpg" alt="Us Together" class="us-photo" style="animation-delay:1.2s">
+    <img src="us.jpg" alt="Us Together" class="us-photo" style="animation-delay:1.2s">
   </section>
 
   <!-- Hidden Note -->
@@ -228,8 +235,19 @@
     <div id="commentList"></div>
   </section>
 
-  <!-- Hearts Generator -->
+  <!-- Script -->
   <script>
+    // Relationship Counter (Started: 18 July 2024)
+    function updateRelationshipDays() {
+      const startDate = new Date("2024-07-18");
+      const now = new Date();
+      const diff = now - startDate;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      document.getElementById("relationshipDays").textContent =
+        `We have been together for ${days} days 💖`;
+    }
+    updateRelationshipDays();
+
     // Birthday Countdown (Nov 19 every year)
     function updateCountdown() {
       const now = new Date();
@@ -252,17 +270,15 @@
     }
 
     // Comments
-    const commentBtn = document.getElementById('commentBtn');
-    const commentInput = document.getElementById('commentInput');
-    const commentList = document.getElementById('commentList');
-    commentBtn.addEventListener('click', () => {
-      const comment = commentInput.value.trim();
-      if(comment) {
+    document.getElementById('commentBtn').addEventListener('click', () => {
+      const input = document.getElementById('commentInput');
+      const text = input.value.trim();
+      if(text) {
         const div = document.createElement('div');
         div.classList.add('comment-item');
-        div.textContent = comment;
-        commentList.appendChild(div);
-        commentInput.value = '';
+        div.textContent = text;
+        document.getElementById('commentList').appendChild(div);
+        input.value = '';
       }
     });
 
@@ -278,6 +294,5 @@
     }
     setInterval(createHeart, 500);
   </script>
-
 </body>
 </html>
