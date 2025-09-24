@@ -134,7 +134,7 @@ audio { margin-top: 20px; }
 <div id="countdown" class="fade-in"></div>
 <div id="relationship" class="fade-in"></div>
 <audio id="bg-music" autoplay loop controls>
-<source src="your_song.mp3" type="audio/mpeg">
+<source src="song.mp3" type="audio/mpeg">
 </audio>
 </section>
 
@@ -142,12 +142,13 @@ audio { margin-top: 20px; }
 <section class="memories">
 <h2 class="fade-in">💞 Our Sweet Memories 💞</h2>
 <div class="memory-gallery">
-  <img src="photo1.jpg" alt="Memory 1" class="fade-in">
-  <img src="photo2.jpg" alt="Memory 2" class="fade-in">
-  <img src="photo3.jpg" alt="Memory 3" class="fade-in">
+  <img src="memory1.jpg" alt="Memory 1" class="fade-in">
+  <img src="memory2.jpg" alt="Memory 2" class="fade-in">
+  <img src="memory3.jpg" alt="Memory 3" class="fade-in">
+  <img src="memory4.jpg" alt="Memory 4" class="fade-in">
 </div>
 <h3 class="fade-in">💖 The Most Special One 💖</h3>
-<img src="peu&deb.jpg" alt="Us Together" class="us-photo fade-in">
+<img src="us.jpg" alt="Us Together" class="us-photo fade-in">
 </section>
 
 <!-- Hidden Note -->
@@ -159,7 +160,7 @@ audio { margin-top: 20px; }
 <p>You are my best friend, my smile, my safe place, and my greatest love ✨</p>
 <p>Every heartbeat whispers your name, every dream paints your face 🌙</p>
 <p>No distance, no time, nothing in this world can ever change what I feel for you 💕</p>
-<p>You are not just my today, you are all of my tomorrows... Forever and Always ❤️</p>
+<p>You arenot just my today, you are all of my tomorrows... Forever and Always ❤️</p>
 </div>
 </section>
 
@@ -198,7 +199,7 @@ updateCountdown();
 
 // Relationship Counter since 18 July
 function updateRelationship() {
-  const startDate = new Date("2025-07-18T00:00:00");
+  const startDate = new Date("2024-07-18T00:00:00");
   const now = new Date();
   const diff = now - startDate;
   const days = Math.floor(diff / (1000*60*60*24));
@@ -292,5 +293,6 @@ function createHeart() {
   setTimeout(() => { heart.remove(); }, 8000);
 }
 setInterval(createHeart, 800);
+</script>
 </body>
 </html>
