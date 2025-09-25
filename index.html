@@ -289,148 +289,12 @@ setInterval(createHeart, 800);
 
   <!-- Love Story Section -->
 <style>
-/* Fonts & Body */
-body {
-  font-family: 'Poppins', sans-serif;
-  background: #f4f4f9;
-  color: #333;
-  margin: 0;
-}
-
-/* Section Title */
-.section-title {
-  text-align: center;
-  padding: 50px 20px 20px;
-  font-size: 42px;
-  font-weight: 700;
-  background: linear-gradient(90deg, #ff758c, #ff7eb3);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Navigation Tabs */
-.unit-nav {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-  gap: 15px;
-}
-
-.unit-nav button {
-  padding: 12px 20px;
-  font-size: 16px;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  background: linear-gradient(90deg, #6a11cb, #2575fc);
-  color: white;
-  transition: 0.3s;
-}
-
-.unit-nav button:hover {
-  background: linear-gradient(90deg, #2575fc, #6a11cb);
-}
-
-/* Unit Container */
-.unit {
-  margin: 0 auto 20px;
-  max-width: 900px;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-  background: #fff;
-  display: none; /* initially hidden; activated by nav */
-}
-
-/* Unit Header */
-.unit-header {
-  padding: 20px;
-  font-size: 26px;
-  font-weight: 600;
-  cursor: pointer;
-  background: #6a11cb; /* new eye-catching color */
-  color: white;
-  text-align: center;
-  transition: background 0.3s;
-}
-
-.unit-header:hover {
-  background: #2575fc;
-}
-
-/* Unit Content */
-.unit-content {
-  display: block;
-  padding: 20px;
-  background: #fafafa;
-}
-
-.unit-content h2 {
-  text-align: center;
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #444;
-}
-
-/* Chapter Container */
-.chapter {
-  margin: 12px 0;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid #ddd;
-  background: #fff;
-}
-
-/* Chapter Header */
-.chapter-header {
-  padding: 15px;
-  font-size: 20px;
-  font-weight: 600;
-  cursor: pointer;
-  background: linear-gradient(90deg, #00c6ff, #0072ff); /* eye-catching gradient */
-  color: white;
-  transition: background 0.3s;
-}
-
-.chapter-header:hover {
-  background: linear-gradient(90deg, #0072ff, #00c6ff);
-}
-
-/* Chapter Content */
-.chapter-content {
-  display: none;
-  padding: 20px;
-  font-size: 16px;
-  line-height: 1.7;
-  background: #fff;
-}
-
-/* Highlighted words */
-.highlight {
-  font-weight: 700;
-  color: #ff2e63;
-}
-
-/* Smooth Fade-in Animation */
-.fade-in {
-  animation: fadeIn 0.4s ease-in;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-</style>
-
-<!-- Love Story Section -->
-<style>
-/* Fonts & Body */
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&display=swap');
 
 body {
   font-family: 'Dancing Script', cursive;
-  background: #fdf6f0;
+  background: #fff0f5; /* soft romantic background */
   color: #333;
   margin: 0;
 }
@@ -439,45 +303,43 @@ body {
 .section-title {
   text-align: center;
   padding: 50px 20px 20px;
-  font-size: 48px;
-  font-weight: 700;
-  background: linear-gradient(90deg, #ff758c, #ff7eb3);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 50px;
+  font-weight: 400;
+  font-family: 'Great Vibes', cursive;
+  color: #ff4d6d;
 }
 
 /* Navigation Tabs */
 .unit-nav {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   gap: 15px;
 }
 
 .unit-nav button {
   padding: 12px 20px;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 400;
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  background: linear-gradient(90deg, #ff6a88, #ff99ac);
+  background: #ffb6c1; /* soft pink gradient */
   color: white;
   transition: 0.3s;
 }
 
 .unit-nav button:hover {
-  background: linear-gradient(90deg, #ff99ac, #ff6a88);
+  background: #ff85a2;
 }
 
-/* Unit Title below nav */
+/* Unit Title (below nav) */
 .unit-title {
   padding: 20px;
-  font-size: 32px;
-  font-weight: 700;
+  font-size: 30px;
   text-align: center;
   color: white;
-  background: linear-gradient(90deg, #ff7e5f, #feb47b); /* warm love-letter feel */
+  background: #ffb6c1;
   border-radius: 12px;
   margin: 0 20px 20px 20px;
 }
@@ -489,137 +351,7 @@ body {
   border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-  background: #fff;
-  display: none; /* initially hidden; activated by nav */
-}
-
-/* Unit Content */
-.unit-content {
-  display: block;
-  padding: 20px;
-  background: #fff6f6;
-}
-
-.unit-content h2 {
-  text-align: center;
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-/* Chapter Container */
-.chapter {
-  margin: 12px 0;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid #ddd;
-  background: #fff;
-}
-
-/* Chapter Header */
-.chapter-header {
-  padding: 15px;
-  font-size: 20px;
-  font-weight: 700;
-  cursor: pointer;
-  background: linear-gradient(90deg, #fcd3b6, #ffb6b9); /* soft romantic gradient */
-  color: #333;
-  transition: background 0.3s;
-}
-
-.chapter-header:hover {
-  background: linear-gradient(90deg, #ffb6b9, #fcd3b6);
-}
-
-/* Chapter Content */
-.chapter-content {
-  display: none;
-  padding: 20px;
-  font-size: 18px;
-  line-height: 1.9;
-  background: #fff6f6;
-}
-
-/* Highlighted words */
-.highlight {
-  font-weight: 700;
-  color: #ff2e63;
-}
-
-/* Smooth Fade-in Animation */
-.fade-in {
-  animation: fadeIn 0.4s ease-in;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-<!-- Love Story Section -->
-<style>
-/* Fonts & Body */
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
-
-body {
-  font-family: 'Dancing Script', cursive;
-  background: #fdf6f0;
-  color: #333;
-  margin: 0;
-}
-
-/* Section Title */
-.section-title {
-  text-align: center;
-  padding: 50px 20px 20px;
-  font-size: 48px;
-  font-weight: 700;
-  background: linear-gradient(90deg, #ff758c, #ff7eb3);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Navigation Tabs */
-.unit-nav {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-  gap: 15px;
-}
-
-.unit-nav button {
-  padding: 12px 20px;
-  font-size: 18px;
-  font-weight: 600;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  background: linear-gradient(90deg, #ff6a88, #ff99ac);
-  color: white;
-  transition: 0.3s;
-}
-
-.unit-nav button:hover {
-  background: linear-gradient(90deg, #ff99ac, #ff6a88);
-}
-
-/* Unit Title below nav */
-.unit-title {
-  padding: 20px;
-  font-size: 32px;
-  font-weight: 700;
-  text-align: center;
-  color: white;
-  background: linear-gradient(90deg, #ff7e5f, #feb47b);
-  border-radius: 12px;
-  margin: 0 20px 20px 20px;
-}
-
-/* Unit Container */
-.unit {
-  margin: 0 auto 20px;
-  max-width: 900px;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-  background: #fff;
+  background: #fff0f5;
   display: none; /* initially hidden */
 }
 
@@ -627,14 +359,14 @@ body {
 .unit-content {
   display: block;
   padding: 20px;
-  background: #fff6f6;
 }
 
 .unit-content h2 {
   text-align: center;
   font-size: 24px;
   margin-bottom: 20px;
-  color: #333;
+  color: #ff4d6d;
+  font-weight: 400;
 }
 
 /* Chapter Container */
@@ -642,49 +374,57 @@ body {
   margin: 12px 0;
   border-radius: 10px;
   overflow: hidden;
-  border: 1px solid #ddd;
-  background: #fff;
 }
 
 /* Chapter Header */
 .chapter-header {
   padding: 15px;
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 22px;
+  font-weight: 400;
   cursor: pointer;
-  background: linear-gradient(90deg, #fcd3b6, #ffb6b9);
+  background: #ffc0cb; /* soft romantic gradient */
   color: #333;
   transition: background 0.3s;
+  border-left: 5px solid #ff4d6d;
 }
 
 .chapter-header:hover {
-  background: linear-gradient(90deg, #ffb6b9, #fcd3b6);
+  background: #ffb6c1;
 }
 
 /* Chapter Content */
 .chapter-content {
   display: none;
-  padding: 20px;
-  font-size: 18px;
-  line-height: 1.9;
-  background: #fff6f6;
+  padding: 20px 20px 20px 30px;
+  font-size: 20px;
+  font-weight: 300;
+  font-family: 'Great Vibes', cursive;
+  line-height: 1.8;
+  border-left: 3px solid #ff85a2; /* subtle quote line */
+  background: #fff0f5;
+  color: #663366;
+  margin-bottom: 15px;
 }
 
-/* Highlighted words */
-.highlight {
-  font-weight: 700;
-  color: #ff2e63;
+/* Unit Cards for 2 & 3 */
+.unit-card {
+  background: #ffb6c1;
+  border-radius: 15px;
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 28px;
+  color: white;
+  font-weight: 400;
+  cursor: pointer;
+  margin: 20px auto;
+  max-width: 400px;
+  transition: 0.3s;
 }
 
-/* Smooth Fade-in Animation */
-.fade-in {
-  animation: fadeIn 0.4s ease-in;
+.unit-card:hover {
+  background: #ff85a2;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
 </style>
 
 <h1 class="section-title">💖 Love Story</h1>
@@ -698,7 +438,7 @@ body {
 
 <!-- Unit 1 -->
 <div id="unit1" class="unit">
-  <div class="unit-title">Unit 1: The Beginning</div>
+  <div class="unit-title">The Beginning</div>
   <div class="unit-content">
 
     <!-- Chapters -->
@@ -754,15 +494,15 @@ body {
   </div>
 </div>
 
-<!-- Unit 2 -->
+<!-- Unit 2 Card -->
 <div id="unit2" class="unit">
-  <div class="unit-title">Unit 2: To be continued...</div>
+  <div class="unit-card">The Journey Continues</div>
   <div class="unit-content"></div>
 </div>
 
-<!-- Unit 3 -->
+<!-- Unit 3 Card -->
 <div id="unit3" class="unit">
-  <div class="unit-title">Unit 3: To be continued...</div>
+  <div class="unit-card">Our Promises</div>
   <div class="unit-content"></div>
 </div>
 
@@ -780,7 +520,7 @@ function toggleChapter(id) {
 // Show Unit 1 by default
 showUnit('unit1');
 </script>
-
+  
   <!-- Comments Section -->
 <section class="comments">
 <h2>Leave a Comment 💌</h2>
