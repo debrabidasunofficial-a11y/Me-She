@@ -293,5 +293,112 @@ function createHeart() {
 }
 setInterval(createHeart, 800);
 </script>
+
+  <!-- Unit 1: Sparks of a Connection -->
+<section id="unit1" style="padding:60px 20px; background: linear-gradient(to bottom, #ffe6eb, #fff0f2); font-family:'Arial', sans-serif; border-radius:12px; margin-bottom:50px; box-shadow:0 8px 20px rgba(0,0,0,0.1);">
+
+  <h2 style="text-align:center; font-family:'Georgia', serif; font-size:38px; color:#d6336c; margin-bottom:50px;">
+    Unit 1: Sparks of a Connection
+  </h2>
+
+  <!-- Chapter List -->
+  <div class="chapters-container" style="max-width:800px; margin:0 auto;">
+
+    <!-- Chapter 1 -->
+    <div class="chapter">
+      <button class="chapter-btn">Chapter 1: The First Glance</button>
+      <div class="chapter-content">
+        <p>I first <span class="highlight">noticed her</span> a year ago, somewhere in the endless sea of YouTube comments. At first, it was just a <span class="highlight">glimpse</span>—a comment that caught my eye. I didn’t know then that this small moment would slowly grow into something I <span class="highlight">couldn’t stop thinking about</span>.</p>
+      </div>
+    </div>
+
+    <!-- Chapter 2 -->
+    <div class="chapter">
+      <button class="chapter-btn">Chapter 2: The Live Comment Connection</button>
+      <div class="chapter-content">
+        <p>A few weeks later, our paths crossed again during a <span class="highlight">live comment session</span>. I didn’t speak to her directly at first, but there was something about her <span class="highlight">words</span>, the way she expressed herself, that stayed in my mind. I found myself engaging in the same spaces she did, hoping for even the smallest interaction.</p>
+      </div>
+    </div>
+
+    <!-- Chapter 3 -->
+    <div class="chapter">
+      <button class="chapter-btn">Chapter 3: The Student Group</button>
+      <div class="chapter-content">
+        <p>Eventually, we ended up in the same <span class="highlight">student group</span>. We argued, debated, teased, and talked endlessly. Somehow, every disagreement became a way to connect. I looked forward to her messages, to the little sparks in our chats that made ordinary days feel <span class="highlight">alive</span>.</p>
+      </div>
+    </div>
+
+    <!-- Chapter 4 -->
+    <div class="chapter">
+      <button class="chapter-btn">Chapter 4: The Secret Identity</button>
+      <div class="chapter-content">
+        <p>After some months, I created another <span class="highlight">Telegram account</span>. I sent messages and joined the group again, chatting with her—but she couldn’t figure out who I was. I kept my identity a secret, carefully revealing little hints. Eventually, I disclosed many things that <span class="highlight">shocked her</span>, and then revealed my true identity. The jokes and laughter that followed made it feel like we’d always known each other.</p>
+      </div>
+    </div>
+
+    <!-- Chapter 5 -->
+    <div class="chapter">
+      <button class="chapter-btn">Chapter 5: WhatsApp Conversations</button>
+      <div class="chapter-content">
+        <p>As time passed, I wanted to take our conversations beyond the group. I asked for her <span class="highlight">WhatsApp number</span>, and once we started talking there, it felt different—closer, more personal. Every message, every emoji, carried a weight of <span class="highlight">anticipation</span>.</p>
+      </div>
+    </div>
+
+    <!-- Chapter 6 -->
+    <div class="chapter">
+      <button class="chapter-btn">Chapter 6: The First Call</button>
+      <div class="chapter-content">
+        <p>Then came the day we finally <span class="highlight">called each other</span>. Nervousness was in the air; my heart raced, and I could sense hers did too. That first call was awkward yet thrilling. After that, we began talking regularly, sharing laughs, stories, and fragments of our lives.</p>
+      </div>
+    </div>
+
+    <!-- Chapter 7 -->
+    <div class="chapter">
+      <button class="chapter-btn">Chapter 7: The Unspoken Promise</button>
+      <div class="chapter-content">
+        <p>All this while, I kept a secret in my heart. I told myself I would wait until I became <span class="highlight">successful</span> before confessing my feelings. Yet, every day, every moment, she was in my thoughts. I never disclosed this plan—not even to her. It was my little silent vow, a quiet hope that one day, the right time would come.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Styles -->
+<style>
+.chapter-btn {
+  width:100%;
+  text-align:left;
+  background:#f8c6d0;
+  color:#d6336c;
+  padding:15px 20px;
+  border:none;
+  border-radius:8px;
+  font-size:20px;
+  font-weight:bold;
+  cursor:pointer;
+  margin-bottom:10px;
+  transition:0.3s;
+}
+.chapter-btn:hover { background-color: #f4a1b5; transform: translateY(-2px); }
+.chapter-content { display:none; background-color: rgba(255,240,242,0.9); padding:20px; border-radius:8px; margin-bottom:20px; box-shadow:0 4px 12px rgba(0,0,0,0.05);}
+.highlight { background-color:#ffd6e0; font-weight:bold; border-radius:4px; padding:2px 4px; }
+</style>
+
+<!-- JS for collapsible chapters -->
+<script>
+const chapterBtns = document.querySelectorAll('.chapter-btn');
+chapterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const content = btn.nextElementSibling;
+    const isVisible = content.style.display === "block";
+    // Close all chapters
+    document.querySelectorAll('.chapter-content').forEach(c => c.style.display = 'none');
+    // Toggle clicked chapter
+    content.style.display = isVisible ? 'none' : 'block';
+    // Scroll into view smoothly
+    if(!isVisible) content.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+</script>
  </body>
 </html>
