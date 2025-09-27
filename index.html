@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Me&She</title>
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&family=Sacramento&family=Pacifico&family=Satisfy&family=Indie+Flower&display=swap" rel="stylesheet">
   <!-- Font Awesome for Social Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -16,6 +16,26 @@ body {
   background: #ffe4ec;
   text-align: center;
   overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Floating I Love U */
+.floating-love {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.5rem;
+  color: #ff4da6;
+  text-align: center;
+  margin-top: 40px;
+  text-shadow: 
+    2px 2px 5px #ff0066, 
+    -2px -2px 5px #ff3399, 
+    0px 0px 20px #ff99cc;
+  animation: float 4s ease-in-out infinite;
+}
+@keyframes float {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
 }
 
 /* Animation for text and images */
@@ -50,7 +70,7 @@ body {
 
 /* Memories */
 .memories { margin: 50px 20px; }
-.memories h2, .memories h3 { font-family: 'Dancing Script', cursive; }
+.memories h2, .memories h3 { font-family: 'Sacramento', cursive; }
 .memory-gallery {
   display: flex;
   justify-content: center;
@@ -106,9 +126,6 @@ body {
 #commentList { margin-top: 20px; font-size: 1.2em; color: #d63384; }
 .comment-item { background: rgba(255,105,180,0.3); margin: 10px auto; padding: 10px 20px; border-radius: 15px; width: fit-content; max-width: 80%; text-align: left; animation: fadeInDown 0.5s ease-in; }
 
-/* Music */
-audio { margin-top: 20px; }
-
 /* Flying Hearts */
 .heart {
   position: fixed; bottom: -20px; color: red; font-size: 24px; animation: floatUp 5s linear infinite; z-index: 9999;
@@ -117,16 +134,11 @@ audio { margin-top: 20px; }
   0% { transform: translateY(0) scale(1); opacity: 1; }
   100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
 }
-
-/* Animate images */
-.memory-gallery img:nth-child(1) { animation-delay: 0.2s; }
-.memory-gallery img:nth-child(2) { animation-delay: 0.4s; }
-.memory-gallery img:nth-child(3) { animation-delay: 0.6s; }
-.memory-gallery img:nth-child(4) { animation-delay: 0.8s; }
-.us-photo { animation-delay: 1s; }
 </style>
-</head>
 <body>
+
+<!-- Floating Love Message -->
+<h1 class="floating-love">💖 I Love U [Her Name] 💖</h1>
 
 <!-- Hero -->
 <section class="hero">
@@ -160,7 +172,7 @@ audio { margin-top: 20px; }
 <p>You are my best friend, my smile, my safe place, and my greatest love ✨</p>
 <p>Every heartbeat whispers your name, every dream paints your face 🌙</p>
 <p>No distance, no time, nothing in this world can ever change what I feel for you 💕</p>
-<p>You arenot just my today, you are all of my tomorrows... Forever and Always ❤️</p>
+<p>You aren’t just my today, you are all of my tomorrows... Forever and Always ❤️</p>
 </div>
 </section>
 
@@ -171,6 +183,246 @@ audio { margin-top: 20px; }
 <button id="addPoemBtn">Add Poem</button>
 <div id="poemList"></div>
 </section>
+
+<!-- Love Story Section -->
+<style>
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&display=swap');
+
+body {
+  font-family: 'Dancing Script', cursive;
+  background: #fff0f5; /* soft romantic background */
+  color: #333;
+  margin: 0;
+}
+
+/* Section Title */
+.section-title {
+  text-align: center;
+  padding: 50px 20px 20px;
+  font-size: 50px;
+  font-family: 'Great Vibes', cursive;
+  color: #ff4d6d;
+}
+
+/* Navigation Tabs */
+.unit-nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  gap: 15px;
+}
+
+.unit-nav button {
+  padding: 12px 20px;
+  font-size: 18px;
+  font-weight: 400;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background: #ffb6c1;
+  color: white;
+  transition: 0.3s;
+}
+
+.unit-nav button:hover {
+  background: #ff85a2;
+}
+
+/* Unit Title (below nav) */
+.unit-title {
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  color: white;
+  background: #ffb6c1;
+  border-radius: 12px;
+  margin: 0 20px 20px 20px;
+  font-family: 'Great Vibes', cursive;
+}
+
+/* Unit Container */
+.unit {
+  margin: 0 auto 60px; /* space after unit */
+  max-width: 900px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff0f5;
+  display: none; /* initially hidden */
+  padding-bottom: 20px;
+}
+
+/* Unit Content */
+.unit-content {
+  display: block;
+  padding: 20px;
+}
+
+/* Chapter Container */
+.chapter {
+  margin: 20px 0; /* extra space between chapters */
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Chapter Header */
+.chapter-header {
+  padding: 15px;
+  font-size: 22px;
+  font-weight: 400;
+  cursor: pointer;
+  background: linear-gradient(90deg, #ffd1dc, #ffb6c1);
+  color: #333;
+  transition: background 0.3s;
+  border-left: 5px solid #ff4d6d;
+  font-family: 'Great Vibes', cursive;
+}
+
+.chapter-header:hover {
+  background: linear-gradient(90deg, #ffb6c1, #ffd1dc);
+}
+
+/* Chapter Content */
+.chapter-content {
+  display: none;
+  padding: 20px 20px 20px 30px;
+  font-size: 20px;
+  font-weight: 300;
+  font-family: 'Great Vibes', cursive;
+  line-height: 1.8;
+  border-left: 3px solid #ff85a2;
+  background: #fff0f5;
+  color: #663366;
+  margin-bottom: 15px;
+}
+
+/* Unit Cards for 2 & 3 */
+.unit-card {
+  background: #ffb6c1;
+  border-radius: 15px;
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 28px;
+  color: white;
+  font-family: 'Great Vibes', cursive;
+  cursor: pointer;
+  margin: 20px auto;
+  max-width: 400px;
+  transition: 0.3s;
+}
+
+.unit-card:hover {
+  background: #ff85a2;
+}
+</style>
+
+<h1 class="section-title">💖 Love Story</h1>
+
+<!-- Unit Navigation -->
+<div class="unit-nav">
+  <button onclick="showUnit('unit1')">Unit 1</button>
+  <button onclick="showUnit('unit2')">Unit 2</button>
+  <button onclick="showUnit('unit3')">Unit 3</button>
+</div>
+
+<!-- Unit 1 -->
+<div id="unit1" class="unit">
+  <div class="unit-title">The Beginning</div>
+  <div class="unit-content">
+    <div class="chapter">
+      <div class="chapter-header" onclick="toggleChapter('ch1')">Chapter 1: The First Glance</div>
+      <div id="ch1" class="chapter-content">
+        <p>I first noticed her a year ago, somewhere in the endless sea of YouTube comments. At first, it was just a glimpse—a comment that caught my eye. I didn’t know then that this small moment would slowly grow into something I couldn’t stop thinking about.</p>
+      </div>
+    </div>
+    <div class="chapter">
+      <div class="chapter-header" onclick="toggleChapter('ch2')">Chapter 2: The Live Comment Connection</div>
+      <div id="ch2" class="chapter-content">
+        <p>A few weeks later, our paths crossed again during a live comment session. I didn’t speak to her directly at first, but there was something about her words, the way she expressed herself, that stayed in my mind. I found myself engaging in the same spaces she did, hoping for even the smallest interaction.</p>
+      </div>
+    </div>
+    <div class="chapter">
+      <div class="chapter-header" onclick="toggleChapter('ch3')">Chapter 3: The Student Group</div>
+      <div id="ch3" class="chapter-content">
+        <p>Eventually, we ended up in the same student group. Here, things started to get interesting. We argued, debated, teased, and talked endlessly in that virtual space. Somehow, every disagreement became a way to connect. I looked forward to her messages, to the little sparks in our chats that made ordinary days feel alive.</p>
+      </div>
+    </div>
+    <div class="chapter">
+      <div class="chapter-header" onclick="toggleChapter('ch4')">Chapter 4: The Secret Identity</div>
+      <div id="ch4" class="chapter-content">
+        <p>After some months, I created another Telegram account. I sent messages and joined the group again, chatting with her—but this time, she couldn’t figure out who I was. I kept my identity a secret, carefully revealing little hints. Eventually, I disclosed many things about myself that <span class="highlight">shocked</span> her, and then, finally, I revealed who I really was. The moment was nerve-wracking, but the jokes and laughter that followed in the group made it feel like we’d always known each other.</p>
+      </div>
+    </div>
+    <div class="chapter">
+      <div class="chapter-header" onclick="toggleChapter('ch5')">Chapter 5: Taking It to WhatsApp</div>
+      <div id="ch5" class="chapter-content">
+        <p>As time passed, I wanted to take our conversations beyond the group. I asked for her WhatsApp number, and once we started talking there, it felt different—closer, more personal. Every message, every emoji, carried a weight of anticipation.</p>
+      </div>
+    </div>
+    <div class="chapter">
+      <div class="chapter-header" onclick="toggleChapter('ch6')">Chapter 6: The First Call</div>
+      <div id="ch6" class="chapter-content">
+        <p>Then came the day we finally called each other. <span class="highlight">Nervousness</span> was in the air; my heart raced, and I could sense hers did too. That first call was awkward yet thrilling. But after that, we began talking regularly, often for an hour at a stretch, sharing laughs, stories, and fragments of our lives.</p>
+      </div>
+    </div>
+    <div class="chapter">
+      <div class="chapter-header" onclick="toggleChapter('ch7')">Chapter 7: The Unspoken Promise</div>
+      <div id="ch7" class="chapter-content">
+        <p>All this while, I kept a <span class="highlight">secret</span> in my heart. I told myself I would wait until I became successful before ever confessing my feelings. Yet, every day, every moment, she was in my thoughts. I never disclosed this plan to anyone—not even her. It was my little silent vow, a quiet hope that one day, the right time would come.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Unit 2 Card -->
+<div id="unit2" class="unit">
+  <div class="unit-card">The Journey Continues</div>
+  <div class="unit-content"></div>
+</div>
+
+<!-- Unit 3 Card -->
+<div id="unit3" class="unit">
+  <div class="unit-card">Our Promises</div>
+  <div class="unit-content"></div>
+</div>
+
+<script>
+function showUnit(id) {
+  ['unit1','unit2','unit3'].forEach(u => document.getElementById(u).style.display = 'none');
+  document.getElementById(id).style.display = 'block';
+}
+
+function toggleChapter(id) {
+  const el = document.getElementById(id);
+  el.style.display = (el.style.display === "block") ? "none" : "block";
+}
+
+// Show Unit 1 by default
+showUnit('unit1');
+</script>
+
+<!-- Comments Section -->
+<section class="comments">
+<h2>Leave a Comment 💌</h2>
+<input type="text" id="commentInput" placeholder="Type your comment here..." />
+<button id="commentBtn">Post Comment</button>
+<div id="commentList"></div>
+</section>
+
+<!-- Footer -->
+<footer style="background: linear-gradient(90deg, #111111, #1a1a1a); color:#eaeaea; padding:40px 20px; text-align:center; font-family:'Poppins', sans-serif;">
+  <h3 style="margin-bottom:15px; font-size:28px; font-weight:700; color:#ffffff;">Me&amp;She</h3>
+  <p style="margin:5px 0;">&copy; 2025 <strong>Me&amp;She</strong>. All rights reserved.</p>
+  <p style="margin:5px 0; font-size:16px;">Website developed by <strong>Debverse</strong></p>
+  <div style="margin-top:15px;">
+    <a href="https://t.me/debverse" target="_blank" style="color:#ffffff; margin:0 10px; font-size:24px; text-decoration:none;">
+      <i class="fa-brands fa-telegram"></i>
+    </a>
+    <a href="https://instagram.com/deb_rabidas" target="_blank" style="color:#ffffff; margin:0 10px; font-size:24px; text-decoration:none;">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+  </div>
+</footer>
 
 <script>
 // Birthday Countdown
@@ -204,21 +456,6 @@ updateRelationship();
 function revealNote() {
   document.getElementById("loveNote").style.display = "block";
 }
-
-// Comments
-const commentBtn = document.getElementById('commentBtn');
-const commentInput = document.getElementById('commentInput');
-const commentList = document.getElementById('commentList');
-commentBtn.addEventListener('click', () => {
-  const comment = commentInput.value.trim();
-  if(comment) {
-    const div = document.createElement('div');
-    div.classList.add('comment-item');
-    div.textContent = comment;
-    commentList.appendChild(div);
-    commentInput.value = '';
-  }
-});
 
 // Poems with Local Storage
 const addPoemBtn = document.getElementById("addPoemBtn");
@@ -286,267 +523,5 @@ function createHeart() {
 }
 setInterval(createHeart, 800);
 </script>
-
-  <!-- Love Story Section -->
-<style>
-/* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&display=swap');
-
-body {
-  font-family: 'Dancing Script', cursive;
-  background: #fff0f5; /* soft romantic background */
-  color: #333;
-  margin: 0;
-}
-
-/* Section Title */
-.section-title {
-  text-align: center;
-  padding: 50px 20px 20px;
-  font-size: 50px;
-  font-weight: 400;
-  font-family: 'Great Vibes', cursive;
-  color: #ff4d6d;
-}
-
-/* Navigation Tabs */
-.unit-nav {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
-  gap: 15px;
-}
-
-.unit-nav button {
-  padding: 12px 20px;
-  font-size: 18px;
-  font-weight: 400;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  background: #ffb6c1; /* soft pink gradient */
-  color: white;
-  transition: 0.3s;
-}
-
-.unit-nav button:hover {
-  background: #ff85a2;
-}
-
-/* Unit Title (below nav) */
-.unit-title {
-  padding: 20px;
-  font-size: 30px;
-  text-align: center;
-  color: white;
-  background: #ffb6c1;
-  border-radius: 12px;
-  margin: 0 20px 20px 20px;
-}
-
-/* Unit Container */
-.unit {
-  margin: 0 auto 20px;
-  max-width: 900px;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-  background: #fff0f5;
-  display: none; /* initially hidden */
-}
-
-/* Unit Content */
-.unit-content {
-  display: block;
-  padding: 20px;
-}
-
-.unit-content h2 {
-  text-align: center;
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #ff4d6d;
-  font-weight: 400;
-}
-
-/* Chapter Container */
-.chapter {
-  margin: 12px 0;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-/* Chapter Header */
-.chapter-header {
-  padding: 15px;
-  font-size: 22px;
-  font-weight: 400;
-  cursor: pointer;
-  background: #ffc0cb; /* soft romantic gradient */
-  color: #333;
-  transition: background 0.3s;
-  border-left: 5px solid #ff4d6d;
-}
-
-.chapter-header:hover {
-  background: #ffb6c1;
-}
-
-/* Chapter Content */
-.chapter-content {
-  display: none;
-  padding: 20px 20px 20px 30px;
-  font-size: 20px;
-  font-weight: 300;
-  font-family: 'Great Vibes', cursive;
-  line-height: 1.8;
-  border-left: 3px solid #ff85a2; /* subtle quote line */
-  background: #fff0f5;
-  color: #663366;
-  margin-bottom: 15px;
-}
-
-/* Unit Cards for 2 & 3 */
-.unit-card {
-  background: #ffb6c1;
-  border-radius: 15px;
-  padding: 30px 20px;
-  text-align: center;
-  font-size: 28px;
-  color: white;
-  font-weight: 400;
-  cursor: pointer;
-  margin: 20px auto;
-  max-width: 400px;
-  transition: 0.3s;
-}
-
-.unit-card:hover {
-  background: #ff85a2;
-}
-
-</style>
-
-<h1 class="section-title">💖 Love Story</h1>
-
-<!-- Unit Navigation -->
-<div class="unit-nav">
-  <button onclick="showUnit('unit1')">Unit 1</button>
-  <button onclick="showUnit('unit2')">Unit 2</button>
-  <button onclick="showUnit('unit3')">Unit 3</button>
-</div>
-
-<!-- Unit 1 -->
-<div id="unit1" class="unit">
-  <div class="unit-title">The Beginning</div>
-  <div class="unit-content">
-
-    <!-- Chapters -->
-    <div class="chapter">
-      <div class="chapter-header" onclick="toggleChapter('ch1')">Chapter 1: The First Glance</div>
-      <div id="ch1" class="chapter-content">
-        <p>I first noticed her a year ago, somewhere in the endless sea of YouTube comments. At first, it was just a glimpse—a comment that caught my eye. I didn’t know then that this small moment would slowly grow into something I couldn’t stop thinking about.</p>
-      </div>
-    </div>
-
-    <div class="chapter">
-      <div class="chapter-header" onclick="toggleChapter('ch2')">Chapter 2: The Live Comment Connection</div>
-      <div id="ch2" class="chapter-content">
-        <p>A few weeks later, our paths crossed again during a live comment session. I didn’t speak to her directly at first, but there was something about her words, the way she expressed herself, that stayed in my mind. I found myself engaging in the same spaces she did, hoping for even the smallest interaction.</p>
-      </div>
-    </div>
-
-    <div class="chapter">
-      <div class="chapter-header" onclick="toggleChapter('ch3')">Chapter 3: The Student Group</div>
-      <div id="ch3" class="chapter-content">
-        <p>Eventually, we ended up in the same student group. Here, things started to get interesting. We argued, debated, teased, and talked endlessly in that virtual space. Somehow, every disagreement became a way to connect. I looked forward to her messages, to the little sparks in our chats that made ordinary days feel alive.</p>
-      </div>
-    </div>
-
-    <div class="chapter">
-      <div class="chapter-header" onclick="toggleChapter('ch4')">Chapter 4: The Secret Identity</div>
-      <div id="ch4" class="chapter-content">
-        <p>After some months, I created another Telegram account. I sent messages and joined the group again, chatting with her—but this time, she couldn’t figure out who I was. I kept my identity a secret, carefully revealing little hints. Eventually, I disclosed many things about myself that <span class="highlight">shocked</span> her, and then, finally, I revealed who I really was. The moment was nerve-wracking, but the jokes and laughter that followed in the group made it feel like we’d always known each other.</p>
-      </div>
-    </div>
-
-    <div class="chapter">
-      <div class="chapter-header" onclick="toggleChapter('ch5')">Chapter 5: Taking It to WhatsApp</div>
-      <div id="ch5" class="chapter-content">
-        <p>As time passed, I wanted to take our conversations beyond the group. I asked for her WhatsApp number, and once we started talking there, it felt different—closer, more personal. Every message, every emoji, carried a weight of anticipation.</p>
-      </div>
-    </div>
-
-    <div class="chapter">
-      <div class="chapter-header" onclick="toggleChapter('ch6')">Chapter 6: The First Call</div>
-      <div id="ch6" class="chapter-content">
-        <p>Then came the day we finally called each other. <span class="highlight">Nervousness</span> was in the air; my heart raced, and I could sense hers did too. That first call was awkward yet thrilling. But after that, we began talking regularly, often for an hour at a stretch, sharing laughs, stories, and fragments of our lives.</p>
-      </div>
-    </div>
-
-    <div class="chapter">
-      <div class="chapter-header" onclick="toggleChapter('ch7')">Chapter 7: The Unspoken Promise</div>
-      <div id="ch7" class="chapter-content">
-        <p>All this while, I kept a <span class="highlight">secret</span> in my heart. I told myself I would wait until I became successful before ever confessing my feelings. Yet, every day, every moment, she was in my thoughts. I never disclosed this plan to anyone—not even her. It was my little silent vow, a quiet hope that one day, the right time would come.</p>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- Unit 2 Card -->
-<div id="unit2" class="unit">
-  <div class="unit-card">The Journey Continues</div>
-  <div class="unit-content"></div>
-</div>
-
-<!-- Unit 3 Card -->
-<div id="unit3" class="unit">
-  <div class="unit-card">Our Promises</div>
-  <div class="unit-content"></div>
-</div>
-
-<script>
-function showUnit(id) {
-  ['unit1','unit2','unit3'].forEach(u => document.getElementById(u).style.display = 'none');
-  document.getElementById(id).style.display = 'block';
-}
-
-function toggleChapter(id) {
-  const el = document.getElementById(id);
-  el.style.display = (el.style.display === "block") ? "none" : "block";
-}
-
-// Show Unit 1 by default
-showUnit('unit1');
-</script>
-  
-  <!-- Comments Section -->
-<section class="comments">
-<h2>Leave a Comment 💌</h2>
-<input type="text" id="commentInput" placeholder="Type your comment here..." />
-<button id="commentBtn">Post Comment</button>
-<div id="commentList"></div>
-</section>
-
-<!-- Footer -->
-<footer style="background: linear-gradient(90deg, #111111, #1a1a1a); color:#eaeaea; padding:40px 20px; text-align:center; font-family:'Poppins', sans-serif;">
-  <h3 style="margin-bottom:15px; font-size:28px; font-weight:700; color:#ffffff;">Me&amp;She</h3>
-  <p style="margin:5px 0;">&copy; 2025 <strong>Me&amp;She</strong>. All rights reserved.</p>
-  <p style="margin:5px 0; font-size:16px;">Website developed by <strong>Debverse</strong></p>
-  <div style="margin-top:15px;">
-    <a href="https://t.me/debverse" target="_blank" style="color:#ffffff; margin:0 10px; font-size:24px; text-decoration:none;">
-      <i class="fa-brands fa-telegram"></i>
-    </a>
-    <a href="https://instagram.com/deb_rabidas" target="_blank" style="color:#ffffff; margin:0 10px; font-size:24px; text-decoration:none;">
-      <i class="fa-brands fa-instagram"></i>
-    </a>
-  </div>
-  <p style="margin-top:15px; font-size:14px;">
-    <a href="#" style="color:#bbbbbb; text-decoration:none; margin:0 10px;">Terms & Conditions</a> |
-    <a href="#" style="color:#bbbbbb; text-decoration:none; margin:0 10px;">Privacy Policy</a>
-  </p>
-</footer>
-  
- </body>
+</body>
 </html>
