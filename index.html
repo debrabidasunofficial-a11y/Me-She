@@ -547,9 +547,9 @@ const currentTimeEl = document.getElementById('currentTime');
 const totalTimeEl = document.getElementById('totalTime');
 
 const playlist = [
-    { title: "Tera Fitoor", artist: "Arijit Singh - Genius", file: "song1.m4a" },
-    { title: "Mere Sapnon Ki Rani", artist: "SANAM", file: "song2.m4a" },
-    { title: "Jo Tere Sang", artist: "Mustafa Zahid - Blood Money", file: "song3.m4a" }
+    { title: "Tera Fitoor", artist: "Arijit Singh - Genius", file: "./song1.m4a" },
+    { title: "Mere Sapnon Ki Rani", artist: "SANAM", file: "./song2.m4a" },
+    { title: "Jo Tere Sang", artist: "Mustafa Zahid - Blood Money", file: "./song3.m4a" }
 ];
 
 let currentTrackIdx = 0;
@@ -574,7 +574,7 @@ function togglePlay() {
             isPlaying = true;
             playBtn.innerText = "⏸";
         }).catch(error => {
-            console.log("Audio load ho raha hai ya file missing hai:", error);
+            console.log("Audio play error:", error);
         });
     }
 }
@@ -615,31 +615,8 @@ function formatTime(seconds) {
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
 }
 
-// GitHub/Local paths ke liye safe loading aur error handling
-const playlist = [
-    { title: "Tera Fitoor", artist: "Arijit Singh - Genius", file: "./song1.m4a" },
-    { title: "Mere Sapnon Ki Rani", artist: "SANAM", file: "./song2.m4a" },
-    { title: "Jo Tere Sang", artist: "Mustafa Zahid - Blood Money", file: "./song3.m4a" }
-];
-
-// Error alert hataane ke liye try-catch aur direct play fix
-function togglePlay() {
-    if (isPlaying) {
-        audio.pause();
-        isPlaying = false;
-        playBtn.innerText = "▶";
-    } else {
-        audio.play().then(() => {
-            isPlaying = true;
-            playBtn.innerText = "⏸";
-        }).catch(error => {
-            console.log("Audio play error:", error);
-        });
-    }
-}
-
 loadTrack(0);
-  
 </script>
+  
 </body>
 </html>
