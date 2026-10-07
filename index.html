@@ -540,9 +540,9 @@ function createHeart() {
   setTimeout(() => { heart.remove(); }, 8000);
 }
 setInterval(createHeart, 800);
-  <!-- ================= AUDIO PLAYER & SCRIPTS ================= -->
+<!-- ================= AUDIO PLAYER & SCRIPTS ================= -->
 <audio id="audioElement">
-    <source id="audioSource" src="song1.mp3" type="audio/mp3">
+    <source id="audioSource" src="song1.m4a" type="audio/mp4">
 </audio>
 
 <div class="music-player-bar" style="position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); width: 92%; max-width: 500px; background: #121824; border: 1px solid rgba(212, 175, 55, 0.25); border-radius: 14px; padding: 14px 20px; display: flex; flex-direction: column; gap: 12px; z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.7); font-family: 'Plus Jakarta Sans', sans-serif; color: #f0f4f8;">
@@ -550,8 +550,8 @@ setInterval(createHeart, 800);
         <div style="display: flex; align-items: center; gap: 12px;">
             <div style="width: 40px; height: 40px; background: #070913; border-radius: 6px; border: 1px solid rgba(212, 175, 55, 0.25); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #d4af37;">♫</div>
             <div>
-                <h4 id="trackTitle" style="font-size: 0.9rem; font-weight: 500; color: #f0f4f8; margin: 0;">Our Special Vibe</h4>
-                <p id="trackArtist" style="font-size: 0.7rem; color: #94a3b8; margin: 0;">Playing for you</p>
+                <h4 id="trackTitle" style="font-size: 0.9rem; font-weight: 500; color: #f0f4f8; margin: 0;">Tera Fitoor</h4>
+                <p id="trackArtist" style="font-size: 0.7rem; color: #94a3b8; margin: 0;">Arijit Singh</p>
             </div>
         </div>
         <div style="display: flex; align-items: center; gap: 15px;">
@@ -587,11 +587,11 @@ setInterval(createHeart, 800);
     const currentTimeEl = document.getElementById('currentTime');
     const totalTimeEl = document.getElementById('totalTime');
 
-    // EDIT YOUR SONG FILENAMES AND TITLES HERE:
+    // YOUR PLAYLIST WITH RENAMED .M4A FILES:
     const playlist = [
-        { title: "Our Special Vibe", artist: "Romantic Track 1", file: "song1.mp3" },
-        { title: "The Song We First Heard", artist: "Memory Lane", file: "song2.mp3" },
-        { title: "All My Tomorrows", artist: "Dedicated To You", file: "song3.mp3" }
+        { title: "Tera Fitoor", artist: "Arijit Singh - Genius", file: "song1.m4a" },
+        { title: "Mere Sapnon Ki Rani", artist: "SANAM", file: "song2.m4a" },
+        { title: "Jo Tere Sang", artist: "Mustafa Zahid - Blood Money", file: "song3.m4a" }
     ];
     
     let currentTrackIdx = 0;
@@ -616,7 +616,7 @@ setInterval(createHeart, 800);
                 isPlaying = true;
                 playBtn.innerText = "⏸";
             }).catch(error => {
-                alert("Could not play audio. Make sure 'song1.mp3' is saved in the same folder as your HTML file!");
+                alert("Could not play audio. Please make sure song1.m4a, song2.m4a, and song3.m4a are saved in the exact same folder as your HTML file!");
             });
         }
     }
@@ -659,5 +659,6 @@ setInterval(createHeart, 800);
 
     loadTrack(0);
 </script>
+  
 </body>
 </html>
