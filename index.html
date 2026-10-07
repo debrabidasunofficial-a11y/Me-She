@@ -540,6 +540,124 @@ function createHeart() {
   setTimeout(() => { heart.remove(); }, 8000);
 }
 setInterval(createHeart, 800);
+  <!-- ================= AUDIO PLAYER & SCRIPTS ================= -->
+<audio id="audioElement">
+    <source id="audioSource" src="song1.mp3" type="audio/mp3">
+</audio>
+
+<div class="music-player-bar" style="position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); width: 92%; max-width: 500px; background: #121824; border: 1px solid rgba(212, 175, 55, 0.25); border-radius: 14px; padding: 14px 20px; display: flex; flex-direction: column; gap: 12px; z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.7); font-family: 'Plus Jakarta Sans', sans-serif; color: #f0f4f8;">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="width: 40px; height: 40px; background: #070913; border-radius: 6px; border: 1px solid rgba(212, 175, 55, 0.25); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #d4af37;">♫</div>
+            <div>
+                <h4 id="trackTitle" style="font-size: 0.9rem; font-weight: 500; color: #f0f4f8; margin: 0;">Our Special Vibe</h4>
+                <p id="trackArtist" style="font-size: 0.7rem; color: #94a3b8; margin: 0;">Playing for you</p>
+            </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <button onclick="prevTrack()" style="background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 1rem;">⏮</button>
+            <button id="playBtn" onclick="togglePlay()" style="width: 38px; height: 38px; background: #f0f4f8; color: #070913; border-radius: 50%; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 0.9rem;">▶</button>
+            <button onclick="nextTrack()" style="background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 1rem;">⏭</button>
+        </div>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 10px; font-size: 0.65rem; color: #94a3b8;">
+        <span id="currentTime">0:00</span>
+        <div id="progressBarContainer" onclick="seekAudio(event)" style="flex-grow: 1; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; cursor: pointer; position: relative; overflow: hidden;">
+            <div id="progressFill" style="width: 0%; height: 100%; background: #d4af37; transition: width 0.1s linear;"></div>
+        </div>
+        <span id="totalTime">0:00</span>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 8px; font-size: 0.65rem; color: #94a3b8;">
+        <span>Track <strong id="trackNum" style="color: #d4af37;">1 of 3</strong></span>
+        <button onclick="nextTrack()" style="background: none; border: none; color: #d4af37; font-size: 0.7rem; cursor: pointer;">Switch Song ♫</button>
+    </div>
+</div>
+
+<script>
+    const audio = document.getElementById('audioElement');
+    const audioSource = document.getElementById('audioSource');
+    const playBtn = document.getElementById('playBtn');
+    const progressFill = document.getElementById('progressFill');
+    const progressBarContainer = document.getElementById('progressBarContainer');
+    const trackTitle = document.getElementById('trackTitle');
+    const trackArtist = document.getElementById('trackArtist');
+    const trackNum = document.getElementById('trackNum');
+    const currentTimeEl = document.getElementById('currentTime');
+    const totalTimeEl = document.getElementById('totalTime');
+
+    // EDIT YOUR SONG FILENAMES AND TITLES HERE:
+    const playlist = [
+        { title: "Our Special Vibe", artist: "Romantic Track 1", file: "song1.mp3" },
+        { title: "The Song We First Heard", artist: "Memory Lane", file: "song2.mp3" },
+        { title: "All My Tomorrows", artist: "Dedicated To You", file: "song3.mp3" }
+    ];
+    
+    let currentTrackIdx = 0;
+    let isPlaying = false;
+
+    function loadTrack(index) {
+        currentTrackIdx = index;
+        audioSource.src = playlist[currentTrackIdx].file;
+        trackTitle.innerText = playlist[currentTrackIdx].title;
+        trackArtist.innerText = playlist[currentTrackIdx].artist;
+        trackNum.innerText = `${currentTrackIdx + 1} of ${playlist.length}`;
+        audio.load();
+    }
+
+    function togglePlay() {
+        if (isPlaying) {
+            audio.pause();
+            isPlaying = false;
+            playBtn.innerText = "▶";
+        } else {
+            audio.play().then(() => {
+                isPlaying = true;
+                playBtn.innerText = "⏸";
+            }).catch(error => {
+                alert("Could not play audio. Make sure 'song1.mp3' is saved in the same folder as your HTML file!");
+            });
+        }
+    }
+
+    function nextTrack() {
+        currentTrackIdx = (currentTrackIdx + 1) % playlist.length;
+        loadTrack(currentTrackIdx);
+        if (isPlaying) audio.play();
+    }
+
+    function prevTrack() {
+        currentTrackIdx = (currentTrackIdx - 1 + playlist.length) % playlist.length;
+        loadTrack(currentTrackIdx);
+        if (isPlaying) audio.play();
+    }
+
+    audio.addEventListener('timeupdate', () => {
+        if (audio.duration) {
+            const percent = (audio.currentTime / audio.duration) * 100;
+            progressFill.style.width = percent + "%";
+            currentTimeEl.innerText = formatTime(audio.currentTime);
+            totalTimeEl.innerText = formatTime(audio.duration);
+        }
+    });
+
+    audio.addEventListener('ended', () => { nextTrack(); });
+
+    function seekAudio(event) {
+        const width = progressBarContainer.clientWidth;
+        const clickX = event.offsetX;
+        const duration = audio.duration;
+        if (duration) { audio.currentTime = (clickX / width) * duration; }
+    }
+
+    function formatTime(seconds) {
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
+    loadTrack(0);
 </script>
 </body>
 </html>
