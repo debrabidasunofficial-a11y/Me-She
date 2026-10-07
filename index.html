@@ -533,278 +533,9 @@ function createHeart() {
   setTimeout(() => { heart.remove(); }, 8000);
 }
 setInterval(createHeart, 800);
-<!-- ================= PREMIUM ROMANTIC MUSIC PLAYER SECTION ================= -->
-
-<audio id="audioElement" preload="metadata">
-    <source id="audioSource" src="./song1.m4a" type="audio/mp4">
-</audio>
-
-<div class="premium-player-bar">
-    <div class="player-inner">
-        <!-- Track Info & Artwork Glow -->
-        <div class="track-meta">
-            <div class="album-art-disc">
-                <div class="vinyl-grooves"></div>
-                <div class="center-dot">♫</div>
-            </div>
-            <div class="track-text">
-                <h4 id="trackTitle">Tera Fitoor</h4>
-                <p id="trackArtist">Arijit Singh - Genius</p>
-            </div>
-        </div>
-
-        <!-- Controls & Timeline -->
-        <div class="player-controls-center">
-            <div class="control-buttons">
-                <button onclick="prevTrack()" class="control-btn" title="Previous">
-                    <i class="fa-solid fa-backward-step"></i>
-                </button>
-                <button id="playBtn" onclick="togglePlay()" class="play-pause-btn" title="Play/Pause">
-                    <i id="playIcon" class="fa-solid fa-play"></i>
-                </button>
-                <button onclick="nextTrack()" class="control-btn" title="Next">
-                    <i class="fa-solid fa-forward-step"></i>
-                </button>
-            </div>
-
-            <div class="timeline-wrapper">
-                <span id="currentTime">0:00</span>
-                <div id="progressBarContainer" class="progress-bar-container" onclick="seekAudio(event)">
-                    <div id="progressFill" class="progress-fill"></div>
-                </div>
-                <span id="totalTime">0:00</span>
-            </div>
-        </div>
-
-        <!-- Extra Info / Playlist Switcher -->
-        <div class="player-extra">
-            <span class="track-counter">Track <strong id="trackNum">1/3</strong></span>
-            <button onclick="nextTrack()" class="switch-song-btn">Next Song ✨</button>
-        </div>
-    </div>
-</div>
-
-<style>
-/* Premium Player Styles */
-.premium-player-bar {
-    position: fixed !important;
-    bottom: 25px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 90% !important;
-    max-width: 600px !important;
-    background: rgba(255, 240, 245, 0.85) !important;
-    backdrop-filter: blur(16px) !important;
-    -webkit-backdrop-filter: blur(16px) !important;
-    border: 1px solid rgba(255, 182, 193, 0.6) !important;
-    border-radius: 24px !important;
-    padding: 14px 22px !important;
-    z-index: 999999 !important;
-    box-shadow: 0 15px 35px rgba(255, 105, 180, 0.25), 0 5px 15px rgba(0, 0, 0, 0.05) !important;
-    font-family: 'Poppins', sans-serif !important;
-}
-
-.player-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-}
-
-/* Track Meta & Vinyl Disc */
-.track-meta {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    min-width: 150px;
-    flex: 1;
-}
-
-.album-art-disc {
-    width: 44px;
-    height: 44px;
-    background: linear-gradient(135deg, #ff4d6d, #ff758c);
-    border-radius: 50%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 10px rgba(255, 77, 109, 0.4);
-    animation: slowRotate 8s linear infinite paused;
-}
-
-.album-art-disc.playing {
-    animation-play-state: running;
-}
-
-@keyframes slowRotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-.vinyl-grooves {
-    position: absolute;
-    width: 32px;
-    height: 32px;
-    border: 1px dashed rgba(255, 255, 255, 0.6);
-    border-radius: 50%;
-}
-
-.center-dot {
-    width: 14px;
-    height: 14px;
-    background: #fff0f5;
-    border-radius: 50%;
-    font-size: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ff4d6d;
-}
-
-.track-text h4 {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #d63384;
-    margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 130px;
-}
-
-.track-text p {
-    font-size: 0.65rem;
-    color: #ff69b4;
-    margin: 2px 0 0 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 130px;
-}
-
-/* Center Controls */
-.player-controls-center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    flex: 1.5;
-}
-
-.control-buttons {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-}
-
-.control-btn {
-    background: none;
-    border: none;
-    color: #ff69b4;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: transform 0.2s, color 0.2s;
-}
-
-.control-btn:hover {
-    color: #ff4d6d;
-    transform: scale(1.15);
-}
-
-.play-pause-btn {
-    width: 38px;
-    height: 38px;
-    background: linear-gradient(135deg, #ff4d6d, #ff758c);
-    color: #fff;
-    border-radius: 50%;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 0.85rem;
-    box-shadow: 0 4px 12px rgba(255, 77, 109, 0.4);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.play-pause-btn:hover {
-    transform: scale(1.08);
-    box-shadow: 0 6px 16px rgba(255, 77, 109, 0.6);
-}
-
-/* Timeline / Progress Bar */
-.timeline-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-    font-size: 0.65rem;
-    color: #ff69b4;
-}
-
-.progress-bar-container {
-    flex-grow: 1;
-    height: 6px;
-    background: rgba(255, 182, 193, 0.4);
-    border-radius: 4px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-}
-
-.progress-fill {
-    width: 0%;
-    height: 100%;
-    background: linear-gradient(90deg, #ff4d6d, #ff758c);
-    border-radius: 4px;
-    transition: width 0.1s linear;
-}
-
-/* Extra Details */
-.player-extra {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 4px;
-    font-size: 0.65rem;
-    color: #ff69b4;
-    min-width: 90px;
-}
-
-.track-counter strong {
-    color: #ff4d6d;
-}
-
-.switch-song-btn {
-    background: none;
-    border: none;
-    color: #ff4d6d;
-    font-size: 0.65rem;
-    cursor: pointer;
-    font-weight: 600;
-    padding: 0;
-    transition: opacity 0.2s;
-}
-
-.switch-song-btn:hover {
-    opacity: 0.7;
-}
-
-/* Responsive adjustments for mobile */
-@media (max-width: 480px) {
-    .premium-player-bar {
-        width: 94% !important;
-        padding: 10px 14px !important;
-    }
-    .player-extra {
-        display: none; /* Hide extra counter on very small screens to save space */
-    }
-}
-</style>
-
+    
 <script>
-// ================= PREMIUM PLAYER SCRIPT =================
+// ================= ROBUST & CLEAN MUSIC PLAYER LOGIC =================
 const audio = document.getElementById('audioElement');
 const audioSource = document.getElementById('audioSource');
 const playBtn = document.getElementById('playBtn');
@@ -834,24 +565,25 @@ function loadTrack(index) {
     trackArtist.innerText = playlist[currentTrackIdx].artist;
     trackNum.innerText = `${currentTrackIdx + 1}/${playlist.length}`;
     audio.load();
-    totalTimeEl.innerText = "0:00";
     currentTimeEl.innerText = "0:00";
-    progressFill.style.width = "0%";
+    totalTimeEl.innerText = "0:00";
+    progressFill.style.width = "0%Style";
 }
 
 function togglePlay() {
     if (isPlaying) {
         audio.pause();
         isPlaying = false;
-        playIcon.className = "fa-solid fa-play";
-        albumArtDisc.classList.remove('playing');
+        if(playIcon) playIcon.className = "fa-solid fa-play";
+        if(albumArtDisc) albumArtDisc.classList.remove('playing');
     } else {
         audio.play().then(() => {
             isPlaying = true;
-            playIcon.className = "fa-solid fa-pause";
-            albumArtDisc.classList.add('playing');
+            if(playIcon) playIcon.className = "fa-solid fa-pause";
+            if(albumArtDisc) albumArtDisc.classList.add('playing');
         }).catch(error => {
-            console.log("Playback error or file path issue:", error);
+            console.log("Playback blocked or file error:", error);
+            alert("Gaana play nahi ho pa raha. Check karein ki audio file folder mein maujood hai.");
         });
     }
 }
@@ -859,28 +591,32 @@ function togglePlay() {
 function nextTrack() {
     currentTrackIdx = (currentTrackIdx + 1) % playlist.length;
     loadTrack(currentTrackIdx);
-    if (isPlaying) {
-        audio.play().catch(e => console.log(e));
-    }
+    audio.play().then(() => {
+        isPlaying = true;
+        if(playIcon) playIcon.className = "fa-solid fa-pause";
+        if(albumArtDisc) albumArtDisc.classList.add('playing');
+    }).catch(e => console.log(e));
 }
 
 function prevTrack() {
     currentTrackIdx = (currentTrackIdx - 1 + playlist.length) % playlist.length;
     loadTrack(currentTrackIdx);
-    if (isPlaying) {
-        audio.play().catch(e => console.log(e));
-    }
+    audio.play().then(() => {
+        isPlaying = true;
+        if(playIcon) playIcon.className = "fa-solid fa-pause";
+        if(albumArtDisc) albumArtDisc.classList.add('playing');
+    }).catch(e => console.log(e));
 }
 
-// Automatically update track duration once metadata is loaded
+// Update duration safely
 audio.addEventListener('loadedmetadata', () => {
-    if (!isNaN(audio.duration)) {
+    if (audio.duration && !isNaN(audio.duration)) {
         totalTimeEl.innerText = formatTime(audio.duration);
     }
 });
 
 audio.addEventListener('timeupdate', () => {
-    if (audio.duration) {
+    if (audio.duration && !isNaN(audio.duration)) {
         const percent = (audio.currentTime / audio.duration) * 100;
         progressFill.style.width = percent + "%";
         currentTimeEl.innerText = formatTime(audio.currentTime);
@@ -906,7 +642,7 @@ function formatTime(seconds) {
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
 }
 
-// Initial load
+// Initializing first track safely
 loadTrack(0);
 </script>
   
