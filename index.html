@@ -574,11 +574,11 @@ function togglePlay() {
             isPlaying = true;
             playBtn.innerText = "⏸";
         }).catch(error => {
-            alert("Audio play nahi ho pa raha! Ensure karein ki song1.m4a, song2.m4a, aur song3.m4a files aapke index.html ke sath same folder mein hain.");
+            console.log("Audio load ho raha hai ya file missing hai:", error);
         });
     }
 }
-
+  
 function nextTrack() {
     currentTrackIdx = (currentTrackIdx + 1) % playlist.length;
     loadTrack(currentTrackIdx);
@@ -615,7 +615,31 @@ function formatTime(seconds) {
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
 }
 
+// GitHub/Local paths ke liye safe loading aur error handling
+const playlist = [
+    { title: "Tera Fitoor", artist: "Arijit Singh - Genius", file: "./song1.m4a" },
+    { title: "Mere Sapnon Ki Rani", artist: "SANAM", file: "./song2.m4a" },
+    { title: "Jo Tere Sang", artist: "Mustafa Zahid - Blood Money", file: "./song3.m4a" }
+];
+
+// Error alert hataane ke liye try-catch aur direct play fix
+function togglePlay() {
+    if (isPlaying) {
+        audio.pause();
+        isPlaying = false;
+        playBtn.innerText = "▶";
+    } else {
+        audio.play().then(() => {
+            isPlaying = true;
+            playBtn.innerText = "⏸";
+        }).catch(error => {
+            console.log("Audio play error:", error);
+        });
+    }
+}
+
 loadTrack(0);
+  
 </script>
 </body>
 </html>
